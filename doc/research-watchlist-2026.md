@@ -64,6 +64,16 @@
 | Durable intermediate artifacts | 中间工件被建模为 typed、addressable、versioned、dependency-aware 的 maintained state。 | hydration manifest 要恢复 artifact lineage / supersession / current-state resolution，而不只恢复对象列表。 |
 | Evidence tracing / execution provenance | provenance 不只是日志，而是可投影的证据支持图。 | `TraceEnvelope` 后续应更像 provenance graph 的入口，而不是纯事件容器。 |
 
+### 2.2 2026-08-06 control plane / provenance / authorization update
+
+| 新论文/信号 | 为什么继续盯 | 对本项目的任务 |
+|---|---|---|
+| ResearchLoop: An Evidence-Gated Control Plane for AI-Assisted Research | 把 research lifecycle 直接做成 evidence-gated control plane，和我们要做的 harness / session / closeout 很接近。 | 把 question、task contract、evidence object、claim ledger、closeout、paper binding 变成 durable project state。 |
+| AgentTrails: Towards Trust and Reuse for Agentic Tasks | 把 raw trajectory 编译成 structured provenance graph，并支持共享 canvas、quotient graph 和 reuse。 | `TraceEnvelope` 后续应先生成 provenance graph，再投影到 replay / diagnosis / reuse。 |
+| Traccia: An OpenTelemetry-Based Governance Platform for AI Systems | telemetry、passive guardrail assessment、execution lineage、hashed trace ledger 统一到治理平台。 | runtime 输出要能形成 hashed trace ledger 和 compliance evidence package。 |
+| Verifiable Agentic Infrastructure: Proof-Derived Authorization for Sovereign AI Systems | authorization 从 standing identity 转向 proof-derived authority 和 evidence chain。 | commit-time authorization 不能只看权限 token，要看 proof object / evidence chain / execution identity。 |
+| Agentic Memory: Learning Unified Long-Term and Short-Term Memory Management for Large Language Model Agents | LTM/STM 管理直接并入 policy，并把 store/retrieve/update/summarize/discard 作为工具动作。 | memory ops 需要是显式 policy action，不能只靠外挂存储或隐式 summary。 |
+
 ## 3. Implementation Watch
 
 | 实现 | 该看什么 | 我们怎么吸收 |
@@ -133,6 +143,11 @@
 24. `ArtifactLineageVerifier`：后续让 hydration manifest 理解 supersession、current-state resolution 和 dependency-aware artifact graphs。
 25. `ProvenanceProjection`：后续把 trace envelope 投影成 execution provenance graph 与 evidence support graph。
 26. `FootprintBudget`：后续把 checkpoint / artifact / trace / context-retention bytes 作为正式预算项。
+27. `ResearchLoopControlPlane`：把 research question、task contract、evidence object、claim ledger、closeout 和 paper binding 变成 durable state。
+28. `ProvenanceGraphCompiler`：先把 trajectory 编译成 provenance graph，再做 replay / reuse / diagnosis。
+29. `HashedTraceLedger`：把 telemetry、guardrail assessment、execution lineage 绑定成可审计 trace ledger。
+30. `ProofDerivedAuthorization`：commit-time authorization 改为 proof object + evidence chain + execution identity 驱动。
+31. `UnifiedMemoryActionPolicy`：把 store/retrieve/update/summarize/discard 统一成显式 memory action。
 
 ## 6. Sources
 
@@ -214,6 +229,11 @@
 - Memory as Action: Autonomous Context Curation for Long-Horizon Agentic Tasks (MemAct): https://arxiv.org/abs/2510.12635
 - LLM Agents Are Latent Context Managers: Eliciting Self-Managed Context via a Proprioceptive Dashboard: https://arxiv.org/abs/2606.30005
 - ECHO: Prune To Act, Trace To Learn With Selective Turn Memory In Agentic RL: https://arxiv.org/abs/2606.31650
+- ResearchLoop: An Evidence-Gated Control Plane for AI-Assisted Research: https://arxiv.org/abs/2605.28282
+- AgentTrails: Towards Trust and Reuse for Agentic Tasks: https://arxiv.org/abs/2607.18816
+- Traccia: An OpenTelemetry-Based Governance Platform for AI Systems: https://arxiv.org/abs/2607.14309
+- Verifiable Agentic Infrastructure: Proof-Derived Authorization for Sovereign AI Systems: https://arxiv.org/abs/2605.15228
+- Agentic Memory: Learning Unified Long-Term and Short-Term Memory Management for Large Language Model Agents: https://arxiv.org/abs/2601.01885
 - SmoothAgent: https://arxiv.org/abs/2607.00151
 - Harness-MU: https://arxiv.org/abs/2606.21856
 - MCPEvol-Bench: https://arxiv.org/abs/2607.14642
