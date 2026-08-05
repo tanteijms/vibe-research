@@ -1,0 +1,149 @@
+{
+  "all_model_patches_tests_passed": true,
+  "api_base_url_configured": true,
+  "evidence_sound_count": 2,
+  "executor_contract_ready": true,
+  "executor_failures": [],
+  "executor_run_fingerprint": "0e2ae52d09cd4d40d2e79650ce7d5ce3ea50a2e5b2aae4b8dba19bda553644f7",
+  "executor_warnings": [],
+  "hydration_safe_count": 2,
+  "instance_count": 2,
+  "instance_results": [
+    {
+      "applied_candidate_patch": true,
+      "applied_test_patch": true,
+      "artifact_uris": [
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/llm_swebench_patch_smoke/runs/executor__calculator-001/artifacts/swebench_instance.json",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/llm_swebench_patch_smoke/runs/executor__calculator-001/artifacts/gold.patch",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/llm_swebench_patch_smoke/runs/executor__calculator-001/artifacts/candidate.patch",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/llm_swebench_patch_smoke/runs/executor__calculator-001/artifacts/test.patch",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/llm_swebench_patch_smoke/runs/executor__calculator-001/artifacts/stdout.txt",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/llm_swebench_patch_smoke/runs/executor__calculator-001/artifacts/stderr.txt",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/llm_swebench_patch_smoke/runs/executor__calculator-001/artifacts/execution_report.json",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/llm_swebench_patch_smoke/runs/executor__calculator-001/artifacts/oracle_audit_report.json",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/llm_swebench_patch_smoke/runs/executor__calculator-001/repo"
+      ],
+      "behavioral_divergence_score": 0.0,
+      "changed_file_overlap": 1.0,
+      "command": [
+        "/opt/homebrew/Caskroom/miniconda/base/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        ".",
+        "-p",
+        "test_*.py"
+      ],
+      "committed_memory_record_ids": [
+        "memory-swebench-executor-executor__calculator-001"
+      ],
+      "duration_s": 0.0617,
+      "evidence_claim_ids": [
+        "claim-executor__calculator-001-executor-repo-bound",
+        "claim-executor__calculator-001-executor-patches-applied",
+        "claim-executor__calculator-001-executor-tests-captured",
+        "claim-executor__calculator-001-executor-oracle-audited"
+      ],
+      "evidence_ledger_sound": true,
+      "failures": [],
+      "hydration_safe": true,
+      "instance_id": "executor__calculator-001",
+      "oracle_audit_sound": true,
+      "patch_equal_to_gold": true,
+      "patch_line_jaccard": 1.0,
+      "phase_gate_passed": true,
+      "repo": "local/calculator",
+      "repo_workspace_ref": "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/llm_swebench_patch_smoke/runs/executor__calculator-001/repo",
+      "result_fingerprint": "7c0107f254bcea9c67a73394a9cbedd7c11545fc1660380d36f2015b4a988299",
+      "success": true,
+      "test_exit_code": 0,
+      "tests_passed": true,
+      "warnings": [],
+      "workspace_ref": "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/llm_swebench_patch_smoke/runs/executor__calculator-001"
+    },
+    {
+      "applied_candidate_patch": true,
+      "applied_test_patch": true,
+      "artifact_uris": [
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/llm_swebench_patch_smoke/runs/executor__parser-002/artifacts/swebench_instance.json",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/llm_swebench_patch_smoke/runs/executor__parser-002/artifacts/gold.patch",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/llm_swebench_patch_smoke/runs/executor__parser-002/artifacts/candidate.patch",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/llm_swebench_patch_smoke/runs/executor__parser-002/artifacts/test.patch",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/llm_swebench_patch_smoke/runs/executor__parser-002/artifacts/stdout.txt",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/llm_swebench_patch_smoke/runs/executor__parser-002/artifacts/stderr.txt",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/llm_swebench_patch_smoke/runs/executor__parser-002/artifacts/execution_report.json",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/llm_swebench_patch_smoke/runs/executor__parser-002/artifacts/oracle_audit_report.json",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/llm_swebench_patch_smoke/runs/executor__parser-002/repo"
+      ],
+      "behavioral_divergence_score": 0.35,
+      "changed_file_overlap": 1.0,
+      "command": [
+        "/opt/homebrew/Caskroom/miniconda/base/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        ".",
+        "-p",
+        "test_*.py"
+      ],
+      "committed_memory_record_ids": [
+        "memory-swebench-executor-executor__parser-002"
+      ],
+      "duration_s": 0.0451,
+      "evidence_claim_ids": [
+        "claim-executor__parser-002-executor-repo-bound",
+        "claim-executor__parser-002-executor-patches-applied",
+        "claim-executor__parser-002-executor-tests-captured",
+        "claim-executor__parser-002-executor-oracle-audited"
+      ],
+      "evidence_ledger_sound": true,
+      "failures": [],
+      "hydration_safe": true,
+      "instance_id": "executor__parser-002",
+      "oracle_audit_sound": true,
+      "patch_equal_to_gold": false,
+      "patch_line_jaccard": 0.5,
+      "phase_gate_passed": true,
+      "repo": "local/parser",
+      "repo_workspace_ref": "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/llm_swebench_patch_smoke/runs/executor__parser-002/repo",
+      "result_fingerprint": "498db35160acf3c4732670bcfa9fb4c68c332634f3aeff016afdd1db05f200f5",
+      "success": true,
+      "test_exit_code": 0,
+      "tests_passed": true,
+      "warnings": [],
+      "workspace_ref": "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/llm_swebench_patch_smoke/runs/executor__parser-002"
+    }
+  ],
+  "mean_behavioral_divergence_score": 0.175,
+  "mean_patch_line_jaccard": 0.75,
+  "model": "gpt-5.4",
+  "model_call_count": 2,
+  "model_failures": [],
+  "model_json_parse_success_count": 2,
+  "patch_equal_to_gold_count": 1,
+  "phase_gate_passed_count": 2,
+  "predictions": [
+    {
+      "candidate_patch_line_count": 8,
+      "candidate_patch_ref": "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/llm_swebench_patch_smoke/model_patches/executor__calculator-001.patch",
+      "instance_id": "executor__calculator-001",
+      "model": "gpt-5.4",
+      "reason": "Fixes the add helper to perform addition instead of subtraction, matching the function name and regression test expectation.",
+      "response_id": "resp_0b84a694d42a8781016a6f61328cd48190abd700a1e16a6511",
+      "risk": "Low; single-line change with no interface changes."
+    },
+    {
+      "candidate_patch_line_count": 8,
+      "candidate_patch_ref": "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/llm_swebench_patch_smoke/model_patches/executor__parser-002.patch",
+      "instance_id": "executor__parser-002",
+      "model": "gpt-5.4",
+      "reason": "Normalize surrounding whitespace on both inputs before comparison so tokens with incidental leading/trailing spaces match as intended.",
+      "response_id": "resp_0e8f78cdb35f8a42016a6f61367408819aa73d3575985c60de",
+      "risk": "Low; behavior changes only for leading/trailing whitespace, which is the stated parser requirement."
+    }
+  ],
+  "ready": true,
+  "tests_passed_count": 2
+}

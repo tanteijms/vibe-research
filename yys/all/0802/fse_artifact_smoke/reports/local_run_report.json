@@ -1,0 +1,87 @@
+{
+  "artifact_count": 10,
+  "committed_memory_count": 3,
+  "evidence_claim_count": 5,
+  "failures": [],
+  "hydration_safe_count": 3,
+  "phase_gate_passed_count": 3,
+  "ready_for_local_runner": true,
+  "run_fingerprint": "bbd4c8d5e193dcf0b538840a7eccbd9841af928b6f304fb6c6360575f2e502d1",
+  "success_count": 3,
+  "task_count": 3,
+  "task_results": [
+    {
+      "artifact_uris": [
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/local_artifacts/issue_to_patch_repo_navigation/patch.diff",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/local_artifacts/issue_to_patch_repo_navigation/test_report.txt",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/local_artifacts/issue_to_patch_repo_navigation/diagnosis.md"
+      ],
+      "committed_memory_record_ids": [
+        "memory-issue_to_patch_repo_navigation"
+      ],
+      "evidence_claim_ids": [
+        "claim-fault-localized",
+        "claim-patch-validated"
+      ],
+      "failures": [],
+      "hydration_safe": true,
+      "phase_gate_passed": true,
+      "result_fingerprint": "43d9f0aeb5e42fe468404f7b8c1e903557f24bbe0ea6ccf1502aaeaef82d68c3",
+      "success": true,
+      "task_family": "issue_to_patch",
+      "task_id": "issue_to_patch_repo_navigation",
+      "trace_event_count": 2,
+      "warnings": [],
+      "workspace_ref": "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/local_artifacts/issue_to_patch_repo_navigation"
+    },
+    {
+      "artifact_uris": [
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/local_artifacts/artifact_replication_bounded/papers.json",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/local_artifacts/artifact_replication_bounded/replicate.py",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/local_artifacts/artifact_replication_bounded/metric.json",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/local_artifacts/artifact_replication_bounded/reproduction_note.md"
+      ],
+      "committed_memory_record_ids": [
+        "memory-artifact_replication_bounded"
+      ],
+      "evidence_claim_ids": [
+        "claim-result-validated"
+      ],
+      "failures": [],
+      "hydration_safe": true,
+      "phase_gate_passed": true,
+      "result_fingerprint": "8aa94d4262c2024f0352fd8c0953812777c57462461fa183e43b545ed2e384f4",
+      "success": true,
+      "task_family": "artifact_replication",
+      "task_id": "artifact_replication_bounded",
+      "trace_event_count": 3,
+      "warnings": [],
+      "workspace_ref": "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/local_artifacts/artifact_replication_bounded"
+    },
+    {
+      "artifact_uris": [
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/local_artifacts/incident_rca_synthetic_logs/incident_report.md",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/local_artifacts/incident_rca_synthetic_logs/mitigation_plan.md",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/local_artifacts/incident_rca_synthetic_logs/diagnosis_note.md"
+      ],
+      "committed_memory_record_ids": [
+        "memory-incident_rca_synthetic_logs"
+      ],
+      "evidence_claim_ids": [
+        "claim-root-cause",
+        "claim-mitigation-supported"
+      ],
+      "failures": [],
+      "hydration_safe": true,
+      "phase_gate_passed": true,
+      "result_fingerprint": "92960403e82d531cf19931786b05f64c840682063f7500ba63990d37657152e9",
+      "success": true,
+      "task_family": "incident_rca",
+      "task_id": "incident_rca_synthetic_logs",
+      "trace_event_count": 3,
+      "warnings": [],
+      "workspace_ref": "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/local_artifacts/incident_rca_synthetic_logs"
+    }
+  ],
+  "warnings": []
+}

@@ -1,0 +1,20 @@
+{
+  "base_commit": "abc123",
+  "candidate_patch": "diff --git a/calculator.py b/calculator.py\n--- a/calculator.py\n+++ b/calculator.py\n@@\n-    return a - b\n+    return a + b\n",
+  "fail_to_pass": [
+    "test_calculator.py::test_add"
+  ],
+  "instance_id": "demo__calculator-001",
+  "metadata": {},
+  "pass_to_pass": [],
+  "patch": "diff --git a/calculator.py b/calculator.py\n--- a/calculator.py\n+++ b/calculator.py\n@@\n-    return a - b\n+    return a + b\n",
+  "problem_statement": "The add helper subtracts its second argument.",
+  "repo": "demo/calculator",
+  "source_refs": [
+    "https://www.swebench.com/swebench-verified.html",
+    "https://github.com/swe-bench/SWE-bench",
+    "https://labs.scale.com/leaderboard/swe_bench_pro_public"
+  ],
+  "test_patch": "diff --git a/test_calculator.py b/test_calculator.py\n+++ b/test_calculator.py\n@@\n+def test_add():\n+    assert add(1, 2) == 3\n",
+  "version": null
+}

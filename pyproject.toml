@@ -1,0 +1,11 @@
+[project]
+name = "vibe-research"
+version = "0.1.0"
+description = "Persistent research agent runtime prototype with Harness x Hermes governance."
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+

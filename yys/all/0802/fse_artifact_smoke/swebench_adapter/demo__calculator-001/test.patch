@@ -1,0 +1,5 @@
+diff --git a/test_calculator.py b/test_calculator.py
++++ b/test_calculator.py
+@@
++def test_add():
++    assert add(1, 2) == 3

@@ -1,0 +1,29 @@
+{
+  "base_commit": "abc123",
+  "candidate_patch_sha256": "f1fcf0873982439e6e557f5c62f913c3a6cfddc0d138f3c1014e7cec9b2988c4",
+  "contamination_flags": [],
+  "environment": {
+    "dataset_name": "princeton-nlp/SWE-bench_Verified",
+    "local_executor_ready": false,
+    "local_repo_path": "",
+    "official_harness": "swebench.harness.run_evaluation",
+    "prediction_model": "demo-oracle-provenance-agent"
+  },
+  "fail_to_pass_sha256": "dd1a7b3f0320091c78122171f2274f7ccf85e9dffaccf300724156497f8db5fc",
+  "failures": [],
+  "gold_patch_sha256": "f1fcf0873982439e6e557f5c62f913c3a6cfddc0d138f3c1014e7cec9b2988c4",
+  "instance_id": "demo__calculator-001",
+  "missing_fields": [],
+  "oracle_fingerprint": "7acc979b980a6e958ddd113f0b6289b9395f6fd3cec64af7aed5577594320331",
+  "pass_to_pass_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "problem_statement_sha256": "02167be6c3153fb7995885c71dd2dfefaa74819fcf697ed352c41721a0528521",
+  "repo": "demo/calculator",
+  "sound": true,
+  "source_refs": [
+    "https://www.swebench.com/swebench-verified.html",
+    "https://github.com/swe-bench/SWE-bench",
+    "https://labs.scale.com/leaderboard/swe_bench_pro_public"
+  ],
+  "test_patch_sha256": "327a283d81a4a6743783f53721790b35f09e95a63c5d09669826cecc0163a870",
+  "warnings": []
+}

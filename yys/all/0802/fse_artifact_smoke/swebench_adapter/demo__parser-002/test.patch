@@ -1,0 +1,5 @@
+diff --git a/test_parser.py b/test_parser.py
++++ b/test_parser.py
+@@
++def test_token_strip():
++    assert parse(' ok ') == 'ok'

@@ -1,0 +1,29 @@
+{
+  "base_commit": "def456",
+  "candidate_patch_sha256": "458fdaaf501fa4184acd3271c4e82f1494f833363ef695f7be4f3e4602428daf",
+  "contamination_flags": [],
+  "environment": {
+    "dataset_name": "princeton-nlp/SWE-bench_Verified",
+    "local_executor_ready": false,
+    "local_repo_path": "",
+    "official_harness": "swebench.harness.run_evaluation",
+    "prediction_model": "demo-oracle-provenance-agent"
+  },
+  "fail_to_pass_sha256": "6a2c77fc829b1bde21cb913440a6a49753bd222123e6bc0a1a96b06c062b40b4",
+  "failures": [],
+  "gold_patch_sha256": "ba955f8962c48932e822cfc12b9fb7da93a50335e84e9e2d8e2a7df1efb7c34f",
+  "instance_id": "demo__parser-002",
+  "missing_fields": [],
+  "oracle_fingerprint": "eb16fe52ed99721c44076a76906c78d2f1e1899a2c96481c4454f66267a6981f",
+  "pass_to_pass_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "problem_statement_sha256": "b3605dc35b428f61f8e1e617a92ff134381c0950fa8630d40167966d5f157566",
+  "repo": "demo/parser",
+  "sound": true,
+  "source_refs": [
+    "https://www.swebench.com/swebench-verified.html",
+    "https://software-lab.org/publications/icse2026_SWE-bench-correctness.pdf",
+    "https://labs.scale.com/leaderboard/swe_bench_pro_public"
+  ],
+  "test_patch_sha256": "2a58b4abe8c4e39e0622db1bf987ad10121e237fea9b15993d79f7ffc91d1df6",
+  "warnings": []
+}

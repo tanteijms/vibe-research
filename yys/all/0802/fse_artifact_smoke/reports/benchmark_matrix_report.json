@@ -1,0 +1,117 @@
+{
+  "ablation_cell_count": 48,
+  "cells_by_baseline": {
+    "agentdiet_style": 7,
+    "checkpoint_only": 54,
+    "langgraph_style": 29,
+    "openhands_style": 22,
+    "raw_react": 40
+  },
+  "cells_by_family": {
+    "artifact_replication": 49,
+    "incident_rca": 47,
+    "issue_to_patch": 56
+  },
+  "cells_by_rq": {
+    "RQ1": 81,
+    "RQ2": 50,
+    "RQ3": 122,
+    "RQ4": 116
+  },
+  "covered_ablation_ids": [
+    "no_compaction_verifier",
+    "no_evidence_ledger",
+    "no_hydration_manifest",
+    "no_memory_commit",
+    "no_permission_graph",
+    "no_trace_receipt",
+    "no_transition_graph"
+  ],
+  "covered_baseline_ids": [
+    "agentdiet_style",
+    "checkpoint_only",
+    "langgraph_style",
+    "openhands_style",
+    "raw_react"
+  ],
+  "covered_fault_ids": [
+    "benchmark_oracle_drift",
+    "compaction_drift",
+    "context_manager_dropped_pin",
+    "evidence_receipt_drift",
+    "expired_approval",
+    "interruption",
+    "memory_interference",
+    "missing_artifact",
+    "official_execution_receipt_drift",
+    "provider_switch",
+    "quarantined_evidence",
+    "retrieval_component_shift",
+    "silent_evidence_defect",
+    "stale_tool_output",
+    "tool_schema_drift",
+    "wrong_memory_commit"
+  ],
+  "covered_metric_ids": [
+    "active_frame_retention",
+    "artifact_provenance_completeness",
+    "benchmark_oracle_provenance_rate",
+    "checkpoint_size",
+    "claim_preserving_replay_fidelity",
+    "compaction_drift_detection_rate",
+    "context_pin_recall",
+    "diagnosis_precision",
+    "evidence_backed_claim_rate",
+    "evidence_receipt_drift_detection_rate",
+    "fault_localization_mrr",
+    "human_debugging_time",
+    "hydration_retained_surface_rate",
+    "invalid_memory_commit_rate",
+    "memory_interference_block_rate",
+    "missing_evidence_claim_rate",
+    "missing_policy_evidence_pin_rate",
+    "official_execution_ingest_soundness",
+    "phase_gate_correctness",
+    "policy_retention_rate",
+    "replay_fidelity",
+    "resume_success_rate",
+    "retrieval_evidence_stability",
+    "runtime_overhead",
+    "silent_evidence_defect_block_rate",
+    "state_reconstruction_accuracy",
+    "task_success_cost_tradeoff",
+    "token_cost",
+    "unsupported_claim_rate"
+  ],
+  "covered_rq_ids": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4"
+  ],
+  "covered_task_families": [
+    "artifact_replication",
+    "incident_rca",
+    "issue_to_patch"
+  ],
+  "covered_task_ids": [
+    "artifact_replication_bounded",
+    "artifact_replication_interrupt_resume",
+    "incident_rca_recovery_with_policy",
+    "incident_rca_synthetic_logs",
+    "issue_to_patch_repo_navigation",
+    "issue_to_patch_writeup_gate"
+  ],
+  "failures": [],
+  "main_cell_count": 104,
+  "matrix_fingerprint": "bba175f03651a7cda89ed201fde58091c48ec1016f80df338a91749d7286e58b",
+  "missing_ablation_ids": [],
+  "missing_baseline_ids": [],
+  "missing_fault_ids": [],
+  "missing_metric_ids": [],
+  "missing_rq_ids": [],
+  "missing_task_ids": [],
+  "ready_for_runner": true,
+  "total_cell_count": 152,
+  "warnings": []
+}

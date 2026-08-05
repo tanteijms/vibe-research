@@ -1,0 +1,23 @@
+{
+  "package_id": "replace_with_short_artifact_id",
+  "paper_title": "Replace with the paper title",
+  "artifact_root": "/absolute/or/relative/path/to/unpacked/artifact",
+  "run_command": [
+    "python",
+    "run_replication.py"
+  ],
+  "expected_artifacts": [
+    "results/metrics.json",
+    "results/reproduction_note.md"
+  ],
+  "expected_metric_files": [
+    "results/metrics.json"
+  ],
+  "source_refs": [
+    "https://replace-with-paper-or-artifact-url"
+  ],
+  "timeout_s": 600,
+  "notes": [
+    "This manifest is a template. Do not count it as real evidence until artifact_root points to a real paper artifact and run_command has been executed."
+  ]
+}

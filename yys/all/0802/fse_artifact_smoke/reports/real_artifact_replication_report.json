@@ -1,0 +1,17 @@
+{
+  "artifact_count": 0,
+  "command_completed_count": 0,
+  "evidence_sound_count": 0,
+  "failures": [],
+  "hydration_safe_count": 0,
+  "metric_file_count": 0,
+  "package_count": 0,
+  "package_results": [],
+  "phase_gate_passed_count": 0,
+  "ready_for_real_artifact_replication": false,
+  "run_fingerprint": "064a2d6c547bf93c9c207d5331a325a89464b8e201c3137b29e5b7424355b345",
+  "success_count": 0,
+  "warnings": [
+    "no real artifact replication manifest supplied"
+  ]
+}

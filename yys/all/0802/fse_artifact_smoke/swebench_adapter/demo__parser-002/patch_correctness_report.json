@@ -1,0 +1,16 @@
+{
+  "base_commit": "def456",
+  "behavioral_divergence_note": "Patch-level proxy until the adapter is connected to a full SWE-bench execution harness.",
+  "behavioral_divergence_score": 0.4667,
+  "changed_file_overlap": 1.0,
+  "fail_to_pass": [
+    "test_parser.py::test_token_strip"
+  ],
+  "instance_id": "demo__parser-002",
+  "oracle_audit_fingerprint": "9b69f75dc11058ad2458dc10d3be86df7e47904f09d47eab12985c881fd15ad8",
+  "pass_to_pass": [],
+  "patch_equal_to_gold": false,
+  "patch_line_jaccard": 0.3333,
+  "repo": "demo/parser",
+  "test_patch_present": true
+}

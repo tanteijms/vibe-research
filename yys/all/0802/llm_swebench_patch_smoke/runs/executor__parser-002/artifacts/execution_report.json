@@ -1,0 +1,29 @@
+{
+  "applied_candidate_patch": true,
+  "applied_test_patch": true,
+  "base_commit": "local-demo-parser",
+  "behavioral_divergence_score": 0.35,
+  "changed_file_overlap": 1.0,
+  "command": [
+    "/opt/homebrew/Caskroom/miniconda/base/bin/python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    ".",
+    "-p",
+    "test_*.py"
+  ],
+  "duration_s": 0.0451,
+  "fail_to_pass": [
+    "test_parser.py::ParserTests::test_strip_regression"
+  ],
+  "instance_id": "executor__parser-002",
+  "oracle_audit_fingerprint": "9bebef7096d4bff2929d76265c9a4109547e5e20972a089542a8840d01341e8b",
+  "pass_to_pass": [],
+  "patch_equal_to_gold": false,
+  "patch_line_jaccard": 0.5,
+  "repo": "local/parser",
+  "test_exit_code": 0,
+  "tests_passed": true
+}

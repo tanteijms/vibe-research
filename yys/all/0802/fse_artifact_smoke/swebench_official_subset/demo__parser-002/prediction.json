@@ -1,0 +1,6 @@
+{
+  "instance_id": "demo__parser-002",
+  "metadata": {},
+  "model_name_or_path": "demo-oracle-provenance-agent",
+  "model_patch": "diff --git a/parser.py b/parser.py\n--- a/parser.py\n+++ b/parser.py\n@@\n-    return token == expected\n+    return token.lower() == expected\n"
+}

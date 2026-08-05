@@ -58,9 +58,42 @@
 
 我们采用敏捷迭代的方式，优先构建 **Infra 骨架（State & Harness）**，逐步演进至完全自动化的 AI Scientist。
 
+### 2026 Harness 迭代
+
+当前 Harness 方向不再只是预算和 sandbox，而是：
+
+- `policy`：预算、权限、审批、超时、脱敏
+- `trace`：每次 tool / sandbox / model 边界都可回放
+- `provider`：OpenAI / DeepSeek 等模型能力差异被抽象成 capability profile
+- `eval`：trace 直接转 regression case
+- `intervention`：支持 fault injection / cached prefix / live suffix / mitigation replay
+- `resume`：checkpoint 不只是状态快照，还携带 pending approval 和 provider snapshot
+- `authority`：approval token 继续升级成 permission graph、authority witness 和 commit-time receipt
+- `memory`：memory write 先 staged/validated，再 committed，避免错误事实直接进入长期记忆
+- `transition`：state-changing trace 可以提升成 critical transition graph，定位失败关键链和分叉点
+- `obligation`：多 agent transition 绑定 actor obligation、evidence link 和 assignment stability audit
+- `decision-memory`：从 committed memory log 投影 task-conditioned 决策视图
+- `compaction`：压缩后的 state 必须保留 policy pins、goal、process stage、artifact lineage 和 approval boundary
+- `diagnosis`：replay divergence 映射到 transition unit、trace envelope drift、suspect harness surface 和 repair hint
+- `trace-receipt`：TraceEnvelope 记录 evidence ledger fingerprint / claim ids / proof receipt，回放时能发现证据 scene 漂移
+- `process-lifecycle`：always-on task 的 process stage 与 state ledger 六轴审计
+- `research-session`：paper scan / hypothesis / experiment / analysis / review / writeup 的 typed phase gate，支持 required evidence claim
+- `research-session-audit`：把 phase gate 绑定到 actor obligation、transition evidence 和 audit map
+- `hydration-manifest`：把 state / trace / memory / evidence / artifact / policy 收束成可恢复现场
+- `evidence-ledger`：source-backed claims、lineage、quarantine / retraction 和 claim citation
+- `fse-benchmark`：把 issue-to-patch / artifact replication / incident RCA 三类任务、baseline、fault taxonomy、ablation 和 FSE RQ 结构化成可检查计划，并可展开成 synthetic experiment matrix、deterministic trace result report、local toy artifact run、SWE-bench-style patch/evidence adapter、local patch executor、official subset bridge 和 artifact-package smoke CLI
+
+对应的详细迭代笔记见 [doc/harness-x-hermes-2026.md](doc/harness-x-hermes-2026.md)。
+
+更偏工程落地的实现对照矩阵见 [doc/harness-implementation-matrix-2026.md](doc/harness-implementation-matrix-2026.md)。
+
+持续追踪论文、协议和实现动态的 watchlist 见 [doc/research-watchlist-2026.md](doc/research-watchlist-2026.md)。
+
+最近一轮带日期的调研增量见 [doc/research-log-2026-08-02.md](doc/research-log-2026-08-02.md)，重点是 permission graph、commit-time authorization、MCP lifecycle evidence、context compaction governance、checkpoint footprint 和 evidence ledger。
+
 ### 📅 Phase 1: MVP 骨架搭建 (当前阶段)
 
-* [ ] **Core State Schema**: 实现支持系统脱水与复水（Dehydration/Rehydration）的全局状态总线 (`src/schema.py`)。
+* [ ] **Core State Schema**: 实现支持系统脱水与复水（Dehydration/Rehydration）的全局状态总线、HydrationManifest 与证据账本 (`src/schema.py`)。
 * [ ] **Harness Guardrail Router**: 编写 LangGraph 控制流，实现大模型调用前的 Token 计数器、费用超标熔断挂起器。
 * [ ] **MCP Connection**: 接入 Model Context Protocol 协议，让 Agent 能够安全读写本地 Workspace 的文件及代码。
 

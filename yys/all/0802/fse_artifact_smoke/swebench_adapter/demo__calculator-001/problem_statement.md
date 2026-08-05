@@ -1,0 +1,1 @@
+The add helper subtracts its second argument.

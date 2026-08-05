@@ -1,0 +1,55 @@
+{
+  "artifact_count": 10,
+  "dataset_name": "princeton-nlp/SWE-bench_Verified",
+  "failures": [],
+  "instance_count": 2,
+  "item_results": [
+    {
+      "artifact_uris": [
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_official_subset/demo__calculator-001/instance.json",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_official_subset/demo__calculator-001/prediction.json",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_official_subset/demo__calculator-001/oracle_audit_report.json"
+      ],
+      "base_commit": "abc123",
+      "failures": [],
+      "has_prediction": true,
+      "instance_id": "demo__calculator-001",
+      "local_executor_ready": false,
+      "official_harness_ready": true,
+      "oracle_audit_sound": true,
+      "oracle_fingerprint": "7acc979b980a6e958ddd113f0b6289b9395f6fd3cec64af7aed5577594320331",
+      "prediction_model": "demo-oracle-provenance-agent",
+      "repo": "demo/calculator",
+      "warnings": []
+    },
+    {
+      "artifact_uris": [
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_official_subset/demo__parser-002/instance.json",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_official_subset/demo__parser-002/prediction.json",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_official_subset/demo__parser-002/oracle_audit_report.json"
+      ],
+      "base_commit": "def456",
+      "failures": [],
+      "has_prediction": true,
+      "instance_id": "demo__parser-002",
+      "local_executor_ready": false,
+      "official_harness_ready": true,
+      "oracle_audit_sound": true,
+      "oracle_fingerprint": "eb16fe52ed99721c44076a76906c78d2f1e1899a2c96481c4454f66267a6981f",
+      "prediction_model": "demo-oracle-provenance-agent",
+      "repo": "demo/parser",
+      "warnings": []
+    }
+  ],
+  "local_executor_ready_count": 0,
+  "matched_prediction_count": 2,
+  "official_harness_command": "python -m swebench.harness.run_evaluation --dataset_name princeton-nlp/SWE-bench_Verified --predictions_path /Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_official_subset/official_predictions.jsonl --max_workers 1 --run_id harness-x-hermes-small-subset",
+  "official_harness_ready_count": 2,
+  "oracle_audit_sound_count": 2,
+  "prediction_count": 2,
+  "predictions_ref": "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_official_subset/official_predictions.jsonl",
+  "ready_for_official_subset": true,
+  "run_fingerprint": "2903488152997266ecb34e98598a141f4204411d1f5d7e7406b5bf6282dea91e",
+  "subset_manifest_ref": "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_official_subset/official_subset_manifest.json",
+  "warnings": []
+}

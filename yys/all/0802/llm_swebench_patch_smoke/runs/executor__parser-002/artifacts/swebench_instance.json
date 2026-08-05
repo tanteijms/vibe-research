@@ -1,0 +1,37 @@
+{
+  "base_commit": "local-demo-parser",
+  "candidate_patch": "diff --git a/parser.py b/parser.py\nindex 4c5d855..0e96377 100644\n--- a/parser.py\n+++ b/parser.py\n@@ -1,2 +1,2 @@\n def matches(token, expected):\n-    return token == expected\n+    return token.strip() == expected.strip()\n",
+  "fail_to_pass": [
+    "test_parser.py::ParserTests::test_strip_regression"
+  ],
+  "instance_id": "executor__parser-002",
+  "metadata": {
+    "candidate_patch_model": "gpt-5.4",
+    "candidate_patch_ref": "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/llm_swebench_patch_smoke/model_patches/executor__parser-002.patch",
+    "candidate_patch_source": "real_llm",
+    "candidate_response_id": "resp_0e8f78cdb35f8a42016a6f61367408819aa73d3575985c60de",
+    "execution_timeout_s": 10,
+    "local_repo_path": "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/llm_swebench_patch_smoke/source_repos/parser_repo",
+    "test_command": [
+      "/opt/homebrew/Caskroom/miniconda/base/bin/python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      ".",
+      "-p",
+      "test_*.py"
+    ]
+  },
+  "pass_to_pass": [],
+  "patch": "diff --git a/parser.py b/parser.py\n--- a/parser.py\n+++ b/parser.py\n@@ -1,2 +1,2 @@\n def matches(token, expected):\n-    return token == expected\n+    return token.strip() == expected\n",
+  "problem_statement": "The parser should strip whitespace before comparing tokens.",
+  "repo": "local/parser",
+  "source_refs": [
+    "https://www.swebench.com/swebench-verified.html",
+    "https://labs.scale.com/leaderboard/swe_bench_pro_public",
+    "https://software-lab.org/publications/icse2026_SWE-bench-correctness.pdf"
+  ],
+  "test_patch": "diff --git a/test_parser.py b/test_parser.py\n--- a/test_parser.py\n+++ b/test_parser.py\n@@ -4,6 +4,9 @@\n class ParserTests(unittest.TestCase):\n     def test_exact(self):\n         self.assertTrue(matches('ok', 'ok'))\n \n+    def test_strip_regression(self):\n+        self.assertTrue(matches(' ok ', 'ok'))\n+\n if __name__ == '__main__':\n     unittest.main()\n",
+  "version": null
+}

@@ -1,0 +1,40 @@
+{
+  "base_commit": "abc123",
+  "completed": true,
+  "evaluation_found": true,
+  "instance_id": "demo__calculator-001",
+  "official_payload": {
+    "completed": true,
+    "demo": true,
+    "instance_id": "demo__calculator-001",
+    "oracle_fingerprint": "7acc979b980a6e958ddd113f0b6289b9395f6fd3cec64af7aed5577594320331",
+    "patch_successfully_applied": true,
+    "resolved": true,
+    "tests_passed": true
+  },
+  "oracle_fingerprint": "7acc979b980a6e958ddd113f0b6289b9395f6fd3cec64af7aed5577594320331",
+  "patch_applied": true,
+  "repo": "demo/calculator",
+  "resolved": true,
+  "result_membership": {
+    "completed": true,
+    "resolved": true,
+    "submitted": true,
+    "unresolved": false
+  },
+  "summary_keys": [
+    "completed_instances",
+    "dataset_name",
+    "demo",
+    "instances_completed",
+    "instances_resolved",
+    "instances_submitted",
+    "resolution_rate",
+    "resolved_instances",
+    "run_id",
+    "submitted_instances",
+    "total_instances",
+    "unresolved_instances"
+  ],
+  "tests_passed": true
+}

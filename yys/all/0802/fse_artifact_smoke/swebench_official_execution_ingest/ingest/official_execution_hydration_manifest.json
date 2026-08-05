@@ -1,0 +1,62 @@
+{
+  "active_step": "swebench_official_execution_ingest",
+  "artifact_fingerprint": "1d80eb3d5ffc8ae7def6d2137580d82a01338198661b307ff7cf9925187369bc",
+  "artifact_uris": [
+    "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_official_execution_ingest/demo_evaluation_results/instance_results.jsonl",
+    "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_official_execution_ingest/demo_evaluation_results/results.json",
+    "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_official_execution_ingest/demo_evaluation_results/run_logs",
+    "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_official_execution_ingest/ingest/demo__calculator-001/official_execution_receipt.json",
+    "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_official_execution_ingest/ingest/demo__parser-002/official_execution_receipt.json",
+    "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_official_subset/official_subset_manifest.json"
+  ],
+  "checkpoint_ref": null,
+  "cursor": "after:swebench_official_execution_ingest",
+  "evidence_claim_ids": [
+    "claim-official-swebench-execution-retained"
+  ],
+  "evidence_entry_ids": [
+    "official-execution-demo__calculator-001",
+    "official-execution-demo__parser-002",
+    "official-instance-results-jsonl",
+    "official-results-json",
+    "official-run-logs",
+    "official-subset-manifest"
+  ],
+  "evidence_fingerprint": "a8970cd03b949b285037f213375e61fcd58fd03a879e1a4093210732c072c3eb",
+  "forbidden_evidence_labels": [],
+  "manifest_id": "hydrate_7c291d1c8a0d",
+  "memory_fingerprint": null,
+  "memory_record_ids": [],
+  "metadata": {
+    "ingest": "official_swebench_execution"
+  },
+  "policy_fingerprint": "9f18eef3c8c725953649aa91c0ba4b422efa2bf53e90cf7e88145f013540b4ee",
+  "process_stage": "dormant",
+  "required_artifact_uris": [
+    "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_official_execution_ingest/demo_evaluation_results/instance_results.jsonl",
+    "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_official_execution_ingest/demo_evaluation_results/results.json",
+    "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_official_execution_ingest/demo_evaluation_results/run_logs",
+    "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_official_execution_ingest/ingest/demo__calculator-001/official_execution_receipt.json",
+    "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_official_execution_ingest/ingest/demo__parser-002/official_execution_receipt.json",
+    "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_official_subset/official_subset_manifest.json"
+  ],
+  "required_evidence_claim_ids": [
+    "claim-official-swebench-execution-retained"
+  ],
+  "required_memory_record_ids": [],
+  "required_surfaces": [
+    "runtime_state",
+    "policy",
+    "trace",
+    "artifact",
+    "evidence"
+  ],
+  "research_phase": null,
+  "research_session_fingerprint": null,
+  "run_id": "run_fbdbdde6154b",
+  "session_id": "sess_e022b2324933",
+  "state_fingerprint": "5dea5619044ea49e8d5b533a0cfc1c8feddc906f1301214fad6ec944c3769301",
+  "task_id": "swebench_official_execution_demo-official-execution-ingest",
+  "trace_event_count": 2,
+  "trace_fingerprint": "bb51342e88148bab7068880006a72a566f0218c14956ed0c723590a7ff4a5721"
+}

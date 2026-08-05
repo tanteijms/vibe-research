@@ -1,0 +1,39 @@
+{
+  "base_commit": "local-demo-calc",
+  "candidate_patch_sha256": "e3bcec87c25377f5972396ebf6e20c7b1e535925e5357cae490501d74e7e040c",
+  "contamination_flags": [],
+  "environment": {
+    "applied_candidate_patch": true,
+    "applied_test_patch": true,
+    "command": [
+      "/opt/homebrew/Caskroom/miniconda/base/bin/python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      ".",
+      "-p",
+      "test_*.py"
+    ],
+    "local_repo_path": "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_executor/source_repos/calculator_repo",
+    "repo_workspace_fingerprint": "f19fd75172e7187a744ff26a7fcaf7639a24755d5ed0b7141f829b7b65ecf305",
+    "tests_passed": true,
+    "timeout_s": 10
+  },
+  "fail_to_pass_sha256": "0899040727360e4a3da0c232f3b67b538a028f38a6aab6addc1a732146ca39ca",
+  "failures": [],
+  "gold_patch_sha256": "e3bcec87c25377f5972396ebf6e20c7b1e535925e5357cae490501d74e7e040c",
+  "instance_id": "executor__calculator-001",
+  "missing_fields": [],
+  "oracle_fingerprint": "2e07fde5c758617d25bc24bba1433a85f71a5ce1ae411d0724d4787438c94000",
+  "pass_to_pass_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "problem_statement_sha256": "02167be6c3153fb7995885c71dd2dfefaa74819fcf697ed352c41721a0528521",
+  "repo": "local/calculator",
+  "sound": true,
+  "source_refs": [
+    "https://www.swebench.com/swebench-verified.html",
+    "https://labs.scale.com/leaderboard/swe_bench_pro_public"
+  ],
+  "test_patch_sha256": "5c01fd10ac55555125739f08c5d2301458429669c19ecbc518a2a9ba5405f428",
+  "warnings": []
+}

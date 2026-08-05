@@ -1,0 +1,40 @@
+{
+  "base_commit": "local-demo-parser",
+  "candidate_patch_sha256": "537b1f99feeee8a97ce77989a006a98a43f6c8d5001476d3854c7f21ca39d87b",
+  "contamination_flags": [],
+  "environment": {
+    "applied_candidate_patch": true,
+    "applied_test_patch": true,
+    "command": [
+      "/opt/homebrew/Caskroom/miniconda/base/bin/python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      ".",
+      "-p",
+      "test_*.py"
+    ],
+    "local_repo_path": "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/llm_swebench_patch_smoke/source_repos/parser_repo",
+    "repo_workspace_fingerprint": "6bddd1a8cd9a41bf64d24fc8343ead9e5b9fda1c134e5b9775ff367b6c8b5b9f",
+    "tests_passed": true,
+    "timeout_s": 10
+  },
+  "fail_to_pass_sha256": "bfb7fcd32dbb89f6ac86d717a3f1c73cf9b6aeca67418d3005b6ce064d534830",
+  "failures": [],
+  "gold_patch_sha256": "78fbbbef1ee89957a2354d3969792251dde0068b929003816a750736ff3324ba",
+  "instance_id": "executor__parser-002",
+  "missing_fields": [],
+  "oracle_fingerprint": "9bebef7096d4bff2929d76265c9a4109547e5e20972a089542a8840d01341e8b",
+  "pass_to_pass_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "problem_statement_sha256": "b3605dc35b428f61f8e1e617a92ff134381c0950fa8630d40167966d5f157566",
+  "repo": "local/parser",
+  "sound": true,
+  "source_refs": [
+    "https://www.swebench.com/swebench-verified.html",
+    "https://labs.scale.com/leaderboard/swe_bench_pro_public",
+    "https://software-lab.org/publications/icse2026_SWE-bench-correctness.pdf"
+  ],
+  "test_patch_sha256": "a884a74275f6d919103a9f13c386fb388761ae2cb9ca532e5c00106965bd5c55",
+  "warnings": []
+}

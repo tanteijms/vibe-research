@@ -1,0 +1,40 @@
+{
+  "base_commit": "def456",
+  "completed": true,
+  "evaluation_found": true,
+  "instance_id": "demo__parser-002",
+  "official_payload": {
+    "completed": true,
+    "demo": true,
+    "instance_id": "demo__parser-002",
+    "oracle_fingerprint": "eb16fe52ed99721c44076a76906c78d2f1e1899a2c96481c4454f66267a6981f",
+    "patch_successfully_applied": true,
+    "resolved": false,
+    "tests_passed": false
+  },
+  "oracle_fingerprint": "eb16fe52ed99721c44076a76906c78d2f1e1899a2c96481c4454f66267a6981f",
+  "patch_applied": true,
+  "repo": "demo/parser",
+  "resolved": false,
+  "result_membership": {
+    "completed": true,
+    "resolved": false,
+    "submitted": true,
+    "unresolved": true
+  },
+  "summary_keys": [
+    "completed_instances",
+    "dataset_name",
+    "demo",
+    "instances_completed",
+    "instances_resolved",
+    "instances_submitted",
+    "resolution_rate",
+    "resolved_instances",
+    "run_id",
+    "submitted_instances",
+    "total_instances",
+    "unresolved_instances"
+  ],
+  "tests_passed": false
+}

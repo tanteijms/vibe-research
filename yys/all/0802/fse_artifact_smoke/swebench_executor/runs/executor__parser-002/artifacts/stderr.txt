@@ -1,0 +1,14 @@
+.F
+======================================================================
+FAIL: test_strip_regression (test_parser.ParserTests.test_strip_regression)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_executor/runs/executor__parser-002/repo/test_parser.py", line 9, in test_strip_regression
+    self.assertTrue(matches(' ok ', 'ok'))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.007s
+
+FAILED (failures=1)

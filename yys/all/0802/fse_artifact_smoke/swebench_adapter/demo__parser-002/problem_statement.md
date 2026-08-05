@@ -1,0 +1,1 @@
+The parser should strip whitespace before comparing tokens.

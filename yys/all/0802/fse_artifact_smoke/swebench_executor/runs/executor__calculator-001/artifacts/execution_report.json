@@ -1,0 +1,29 @@
+{
+  "applied_candidate_patch": true,
+  "applied_test_patch": true,
+  "base_commit": "local-demo-calc",
+  "behavioral_divergence_score": 0.0,
+  "changed_file_overlap": 1.0,
+  "command": [
+    "/opt/homebrew/Caskroom/miniconda/base/bin/python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    ".",
+    "-p",
+    "test_*.py"
+  ],
+  "duration_s": 0.0584,
+  "fail_to_pass": [
+    "test_calculator.py::CalculatorTests::test_add_regression"
+  ],
+  "instance_id": "executor__calculator-001",
+  "oracle_audit_fingerprint": "2e07fde5c758617d25bc24bba1433a85f71a5ce1ae411d0724d4787438c94000",
+  "pass_to_pass": [],
+  "patch_equal_to_gold": true,
+  "patch_line_jaccard": 1.0,
+  "repo": "local/calculator",
+  "test_exit_code": 0,
+  "tests_passed": true
+}

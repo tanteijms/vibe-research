@@ -1,0 +1,7 @@
+diff --git a/parser.py b/parser.py
+--- a/parser.py
++++ b/parser.py
+@@ -1,2 +1,2 @@
+ def matches(token, expected):
+-    return token == expected
++    return token.lower() == expected

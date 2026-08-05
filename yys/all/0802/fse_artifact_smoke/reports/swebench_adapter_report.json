@@ -1,0 +1,91 @@
+{
+  "artifact_count": 14,
+  "candidate_patch_equal_count": 1,
+  "evidence_sound_count": 2,
+  "failures": [],
+  "hydration_safe_count": 2,
+  "instance_count": 2,
+  "instance_results": [
+    {
+      "artifact_uris": [
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_adapter/demo__calculator-001/swebench_instance.json",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_adapter/demo__calculator-001/problem_statement.md",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_adapter/demo__calculator-001/gold.patch",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_adapter/demo__calculator-001/candidate.patch",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_adapter/demo__calculator-001/test.patch",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_adapter/demo__calculator-001/patch_correctness_report.json",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_adapter/demo__calculator-001/oracle_audit_report.json"
+      ],
+      "behavioral_divergence_score": 0.0,
+      "changed_file_overlap": 1.0,
+      "committed_memory_record_ids": [
+        "memory-swebench-demo__calculator-001"
+      ],
+      "evidence_claim_ids": [
+        "claim-demo__calculator-001-issue-bound",
+        "claim-demo__calculator-001-candidate-tested",
+        "claim-demo__calculator-001-divergence-measured",
+        "claim-demo__calculator-001-oracle-audited"
+      ],
+      "evidence_ledger_sound": true,
+      "failures": [],
+      "hydration_safe": true,
+      "instance_id": "demo__calculator-001",
+      "oracle_audit_sound": true,
+      "patch_equal_to_gold": true,
+      "patch_line_jaccard": 1.0,
+      "phase_gate_passed": true,
+      "repo": "demo/calculator",
+      "result_fingerprint": "2f790a797586a7a7d42cb3a47fc174963c507e89403fdcee2c1b70abd13a7d88",
+      "success": true,
+      "test_patch_present": true,
+      "warnings": [],
+      "workspace_ref": "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_adapter/demo__calculator-001"
+    },
+    {
+      "artifact_uris": [
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_adapter/demo__parser-002/swebench_instance.json",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_adapter/demo__parser-002/problem_statement.md",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_adapter/demo__parser-002/gold.patch",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_adapter/demo__parser-002/candidate.patch",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_adapter/demo__parser-002/test.patch",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_adapter/demo__parser-002/patch_correctness_report.json",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_adapter/demo__parser-002/oracle_audit_report.json"
+      ],
+      "behavioral_divergence_score": 0.4667,
+      "changed_file_overlap": 1.0,
+      "committed_memory_record_ids": [
+        "memory-swebench-demo__parser-002"
+      ],
+      "evidence_claim_ids": [
+        "claim-demo__parser-002-issue-bound",
+        "claim-demo__parser-002-candidate-tested",
+        "claim-demo__parser-002-divergence-measured",
+        "claim-demo__parser-002-oracle-audited"
+      ],
+      "evidence_ledger_sound": true,
+      "failures": [],
+      "hydration_safe": true,
+      "instance_id": "demo__parser-002",
+      "oracle_audit_sound": true,
+      "patch_equal_to_gold": false,
+      "patch_line_jaccard": 0.3333,
+      "phase_gate_passed": true,
+      "repo": "demo/parser",
+      "result_fingerprint": "b7163905d2e5f31b25f9ad6f3c7071bc7336339628024d12cae69d0aa3663171",
+      "success": true,
+      "test_patch_present": true,
+      "warnings": [],
+      "workspace_ref": "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_adapter/demo__parser-002"
+    }
+  ],
+  "mean_behavioral_divergence_score": 0.2334,
+  "mean_patch_line_jaccard": 0.6666,
+  "oracle_audit_sound_count": 2,
+  "phase_gate_passed_count": 2,
+  "ready_for_swebench_adapter": true,
+  "run_fingerprint": "f989a77d734d7fa026244189429916f8f0ebf4fef18cac7362dd410522dcc55b",
+  "success_count": 2,
+  "test_patch_present_count": 2,
+  "warnings": []
+}

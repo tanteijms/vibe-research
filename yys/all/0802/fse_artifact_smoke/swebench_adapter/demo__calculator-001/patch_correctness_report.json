@@ -1,0 +1,16 @@
+{
+  "base_commit": "abc123",
+  "behavioral_divergence_note": "Patch-level proxy until the adapter is connected to a full SWE-bench execution harness.",
+  "behavioral_divergence_score": 0.0,
+  "changed_file_overlap": 1.0,
+  "fail_to_pass": [
+    "test_calculator.py::test_add"
+  ],
+  "instance_id": "demo__calculator-001",
+  "oracle_audit_fingerprint": "f95b420cdb84c012a876d7d326cad76bd4536095163c4a9659a490018263bbfd",
+  "pass_to_pass": [],
+  "patch_equal_to_gold": true,
+  "patch_line_jaccard": 1.0,
+  "repo": "demo/calculator",
+  "test_patch_present": true
+}

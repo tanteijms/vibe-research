@@ -1,0 +1,13 @@
+diff --git a/test_parser.py b/test_parser.py
+--- a/test_parser.py
++++ b/test_parser.py
+@@ -4,6 +4,9 @@
+ class ParserTests(unittest.TestCase):
+     def test_exact(self):
+         self.assertTrue(matches('ok', 'ok'))
+ 
++    def test_strip_regression(self):
++        self.assertTrue(matches(' ok ', 'ok'))
++
+ if __name__ == '__main__':
+     unittest.main()

@@ -1,0 +1,126 @@
+{
+  "artifact_count": 18,
+  "candidate_patch_equal_count": 1,
+  "evidence_sound_count": 2,
+  "failures": [],
+  "hydration_safe_count": 2,
+  "instance_count": 2,
+  "instance_results": [
+    {
+      "applied_candidate_patch": true,
+      "applied_test_patch": true,
+      "artifact_uris": [
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_executor/runs/executor__calculator-001/artifacts/swebench_instance.json",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_executor/runs/executor__calculator-001/artifacts/gold.patch",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_executor/runs/executor__calculator-001/artifacts/candidate.patch",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_executor/runs/executor__calculator-001/artifacts/test.patch",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_executor/runs/executor__calculator-001/artifacts/stdout.txt",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_executor/runs/executor__calculator-001/artifacts/stderr.txt",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_executor/runs/executor__calculator-001/artifacts/execution_report.json",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_executor/runs/executor__calculator-001/artifacts/oracle_audit_report.json",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_executor/runs/executor__calculator-001/repo"
+      ],
+      "behavioral_divergence_score": 0.0,
+      "changed_file_overlap": 1.0,
+      "command": [
+        "/opt/homebrew/Caskroom/miniconda/base/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        ".",
+        "-p",
+        "test_*.py"
+      ],
+      "committed_memory_record_ids": [
+        "memory-swebench-executor-executor__calculator-001"
+      ],
+      "duration_s": 0.0584,
+      "evidence_claim_ids": [
+        "claim-executor__calculator-001-executor-repo-bound",
+        "claim-executor__calculator-001-executor-patches-applied",
+        "claim-executor__calculator-001-executor-tests-captured",
+        "claim-executor__calculator-001-executor-oracle-audited"
+      ],
+      "evidence_ledger_sound": true,
+      "failures": [],
+      "hydration_safe": true,
+      "instance_id": "executor__calculator-001",
+      "oracle_audit_sound": true,
+      "patch_equal_to_gold": true,
+      "patch_line_jaccard": 1.0,
+      "phase_gate_passed": true,
+      "repo": "local/calculator",
+      "repo_workspace_ref": "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_executor/runs/executor__calculator-001/repo",
+      "result_fingerprint": "c355757ec9de32d2f1517b2a98d4627851467ce27ce93da0a4635cef79c12a1c",
+      "success": true,
+      "test_exit_code": 0,
+      "tests_passed": true,
+      "warnings": [],
+      "workspace_ref": "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_executor/runs/executor__calculator-001"
+    },
+    {
+      "applied_candidate_patch": true,
+      "applied_test_patch": true,
+      "artifact_uris": [
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_executor/runs/executor__parser-002/artifacts/swebench_instance.json",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_executor/runs/executor__parser-002/artifacts/gold.patch",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_executor/runs/executor__parser-002/artifacts/candidate.patch",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_executor/runs/executor__parser-002/artifacts/test.patch",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_executor/runs/executor__parser-002/artifacts/stdout.txt",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_executor/runs/executor__parser-002/artifacts/stderr.txt",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_executor/runs/executor__parser-002/artifacts/execution_report.json",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_executor/runs/executor__parser-002/artifacts/oracle_audit_report.json",
+        "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_executor/runs/executor__parser-002/repo"
+      ],
+      "behavioral_divergence_score": 0.35,
+      "changed_file_overlap": 1.0,
+      "command": [
+        "/opt/homebrew/Caskroom/miniconda/base/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        ".",
+        "-p",
+        "test_*.py"
+      ],
+      "committed_memory_record_ids": [
+        "memory-swebench-executor-executor__parser-002"
+      ],
+      "duration_s": 0.1245,
+      "evidence_claim_ids": [
+        "claim-executor__parser-002-executor-repo-bound",
+        "claim-executor__parser-002-executor-patches-applied",
+        "claim-executor__parser-002-executor-tests-captured",
+        "claim-executor__parser-002-executor-oracle-audited"
+      ],
+      "evidence_ledger_sound": true,
+      "failures": [],
+      "hydration_safe": true,
+      "instance_id": "executor__parser-002",
+      "oracle_audit_sound": true,
+      "patch_equal_to_gold": false,
+      "patch_line_jaccard": 0.5,
+      "phase_gate_passed": true,
+      "repo": "local/parser",
+      "repo_workspace_ref": "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_executor/runs/executor__parser-002/repo",
+      "result_fingerprint": "3dbfe772f585897df5d3132ebdde8dcc90541d0e94a88b00e08d90dd1350ca07",
+      "success": true,
+      "test_exit_code": 1,
+      "tests_passed": false,
+      "warnings": [],
+      "workspace_ref": "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_executor/runs/executor__parser-002"
+    }
+  ],
+  "mean_behavioral_divergence_score": 0.175,
+  "mean_duration_s": 0.0915,
+  "mean_patch_line_jaccard": 0.75,
+  "oracle_audit_sound_count": 2,
+  "phase_gate_passed_count": 2,
+  "ready_for_swebench_executor": true,
+  "run_fingerprint": "fa017292d103d64853b52b0d6bf9ff618718487c3cfc37c97ed1df4e1c7d1563",
+  "success_count": 2,
+  "tests_passed_count": 1,
+  "warnings": []
+}

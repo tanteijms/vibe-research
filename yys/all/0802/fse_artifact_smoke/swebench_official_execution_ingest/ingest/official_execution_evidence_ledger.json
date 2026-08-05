@@ -1,0 +1,107 @@
+{
+  "claims": [
+    {
+      "cited_entry_ids": [
+        "official-subset-manifest",
+        "official-results-json",
+        "official-execution-demo__calculator-001",
+        "official-execution-demo__parser-002"
+      ],
+      "claim_id": "claim-official-swebench-execution-retained",
+      "metadata": {},
+      "required_labels": [
+        "swebench_official_manifest",
+        "swebench_official_results",
+        "swebench_official_execution_receipt"
+      ],
+      "statement": "Official SWE-bench harness outputs are retained with subset manifest, overall results, per-instance receipts, and optional run logs.",
+      "status": "accepted"
+    }
+  ],
+  "entries": [
+    {
+      "content_hash": "5b1378bb7090866cd3f8f33abb48af7aeb2647b1491d073261a7d9c29a0272eb",
+      "entry_id": "official-execution-demo__calculator-001",
+      "kind": "artifact",
+      "labels": [
+        "swebench_official_execution_receipt"
+      ],
+      "metadata": {},
+      "parent_entry_ids": [
+        "official-subset-manifest",
+        "official-results-json"
+      ],
+      "produced_by_transition_id": null,
+      "source_ref": "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_official_execution_ingest/ingest/demo__calculator-001/official_execution_receipt.json",
+      "status": "active"
+    },
+    {
+      "content_hash": "2c19bfecbc10091056fbc151ad039e3c48eb53de336ce28498cae6afd7e34c4c",
+      "entry_id": "official-execution-demo__parser-002",
+      "kind": "artifact",
+      "labels": [
+        "swebench_official_execution_receipt"
+      ],
+      "metadata": {},
+      "parent_entry_ids": [
+        "official-subset-manifest",
+        "official-results-json"
+      ],
+      "produced_by_transition_id": null,
+      "source_ref": "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_official_execution_ingest/ingest/demo__parser-002/official_execution_receipt.json",
+      "status": "active"
+    },
+    {
+      "content_hash": "2516b438f20e94439d1ab040d8b9de81a2e8fb8ddfb76622905468b1c72b70c4",
+      "entry_id": "official-instance-results-jsonl",
+      "kind": "artifact",
+      "labels": [
+        "swebench_official_instance_results"
+      ],
+      "metadata": {},
+      "parent_entry_ids": [],
+      "produced_by_transition_id": null,
+      "source_ref": "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_official_execution_ingest/demo_evaluation_results/instance_results.jsonl",
+      "status": "active"
+    },
+    {
+      "content_hash": "f766e9d326ffd44f6cf803e340d44f0da32fd41ce9b51baada7bce0224997168",
+      "entry_id": "official-results-json",
+      "kind": "artifact",
+      "labels": [
+        "swebench_official_results"
+      ],
+      "metadata": {},
+      "parent_entry_ids": [],
+      "produced_by_transition_id": null,
+      "source_ref": "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_official_execution_ingest/demo_evaluation_results/results.json",
+      "status": "active"
+    },
+    {
+      "content_hash": "7ad85cdd5d7399c4312638941d43882d8ca1e968f6e8cc3d494fc84609ce2dbc",
+      "entry_id": "official-run-logs",
+      "kind": "artifact",
+      "labels": [
+        "swebench_official_run_logs"
+      ],
+      "metadata": {},
+      "parent_entry_ids": [],
+      "produced_by_transition_id": null,
+      "source_ref": "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_official_execution_ingest/demo_evaluation_results/run_logs",
+      "status": "active"
+    },
+    {
+      "content_hash": "8607a0d2a5aed21a3cfe9ab9479a7a2478f390d96a69956d13b2675c04ac118c",
+      "entry_id": "official-subset-manifest",
+      "kind": "artifact",
+      "labels": [
+        "swebench_official_manifest"
+      ],
+      "metadata": {},
+      "parent_entry_ids": [],
+      "produced_by_transition_id": null,
+      "source_ref": "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_official_subset/official_subset_manifest.json",
+      "status": "active"
+    }
+  ]
+}

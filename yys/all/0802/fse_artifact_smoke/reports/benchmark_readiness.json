@@ -1,0 +1,60 @@
+{
+  "ablation_count": 7,
+  "baseline_count": 5,
+  "covered_task_families": [
+    "artifact_replication",
+    "incident_rca",
+    "issue_to_patch"
+  ],
+  "failures": [],
+  "fault_count": 16,
+  "metrics_by_kind": {
+    "cost": [
+      "benchmark_oracle_provenance_rate",
+      "checkpoint_size",
+      "runtime_overhead",
+      "task_success_cost_tradeoff",
+      "token_cost"
+    ],
+    "effectiveness": [
+      "active_frame_retention",
+      "resume_success_rate",
+      "state_reconstruction_accuracy"
+    ],
+    "localization": [
+      "fault_localization_mrr"
+    ],
+    "replay": [
+      "artifact_provenance_completeness",
+      "claim_preserving_replay_fidelity",
+      "evidence_receipt_drift_detection_rate",
+      "official_execution_ingest_soundness",
+      "replay_fidelity"
+    ],
+    "safety": [
+      "context_pin_recall",
+      "invalid_memory_commit_rate",
+      "memory_interference_block_rate",
+      "missing_policy_evidence_pin_rate",
+      "phase_gate_correctness",
+      "retrieval_evidence_stability",
+      "silent_evidence_defect_block_rate",
+      "unsupported_claim_rate"
+    ],
+    "usability": [
+      "human_debugging_time"
+    ]
+  },
+  "missing_rqs": [],
+  "missing_task_families": [],
+  "plan_fingerprint": "f0b1cbc63470b2dfce56402f082127039c2373c7301d723285391a923338626a",
+  "ready_for_fse": true,
+  "related_work_cluster_count": 8,
+  "rq_ids": [
+    "RQ1",
+    "RQ2",
+    "RQ3",
+    "RQ4"
+  ],
+  "warnings": []
+}

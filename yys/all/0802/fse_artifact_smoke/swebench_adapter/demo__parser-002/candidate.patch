@@ -1,0 +1,6 @@
+diff --git a/parser.py b/parser.py
+--- a/parser.py
++++ b/parser.py
+@@
+-    return token == expected
++    return token.lower() == expected

@@ -1,0 +1,6 @@
+{
+  "instance_id": "demo__calculator-001",
+  "metadata": {},
+  "model_name_or_path": "demo-oracle-provenance-agent",
+  "model_patch": "diff --git a/calculator.py b/calculator.py\n--- a/calculator.py\n+++ b/calculator.py\n@@\n-    return a - b\n+    return a + b\n"
+}

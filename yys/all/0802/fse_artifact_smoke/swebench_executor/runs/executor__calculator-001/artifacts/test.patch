@@ -1,0 +1,13 @@
+diff --git a/test_calculator.py b/test_calculator.py
+--- a/test_calculator.py
++++ b/test_calculator.py
+@@ -4,6 +4,9 @@
+ class CalculatorTests(unittest.TestCase):
+     def test_identity(self):
+         self.assertEqual(add(2, 0), 2)
+ 
++    def test_add_regression(self):
++        self.assertEqual(add(1, 2), 3)
++
+ if __name__ == '__main__':
+     unittest.main()

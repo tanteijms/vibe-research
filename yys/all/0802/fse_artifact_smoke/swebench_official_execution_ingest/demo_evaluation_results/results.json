@@ -1,0 +1,24 @@
+{
+  "completed_instances": [
+    "demo__calculator-001",
+    "demo__parser-002"
+  ],
+  "dataset_name": "princeton-nlp/SWE-bench_Verified",
+  "demo": true,
+  "instances_completed": 2,
+  "instances_resolved": 1,
+  "instances_submitted": 2,
+  "resolution_rate": 0.5,
+  "resolved_instances": [
+    "demo__calculator-001"
+  ],
+  "run_id": "demo-official-execution-ingest",
+  "submitted_instances": [
+    "demo__calculator-001",
+    "demo__parser-002"
+  ],
+  "total_instances": 2,
+  "unresolved_instances": [
+    "demo__parser-002"
+  ]
+}

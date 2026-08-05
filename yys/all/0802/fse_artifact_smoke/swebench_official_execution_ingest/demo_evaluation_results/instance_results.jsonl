@@ -1,0 +1,2 @@
+{"completed": true, "demo": true, "instance_id": "demo__calculator-001", "oracle_fingerprint": "7acc979b980a6e958ddd113f0b6289b9395f6fd3cec64af7aed5577594320331", "patch_successfully_applied": true, "resolved": true, "tests_passed": true}
+{"completed": true, "demo": true, "instance_id": "demo__parser-002", "oracle_fingerprint": "eb16fe52ed99721c44076a76906c78d2f1e1899a2c96481c4454f66267a6981f", "patch_successfully_applied": true, "resolved": false, "tests_passed": false}

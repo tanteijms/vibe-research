@@ -1,0 +1,70 @@
+{
+  "benchmark_strengths": [
+    "The benchmark scaffold now looks like an empirical SE paper scaffold, not just a runtime demo.",
+    "The deterministic trace runner can stress hydration, memory, replay, provenance, and cost metrics.",
+    "The current artifact package is functionally smoke-testable and already retains evidence/hydration outputs."
+  ],
+  "empirical_maturity_level": "L3_official_ingest_contract_smoke",
+  "min_real_swebench_instances_required": 5,
+  "missing_submission_gates": [
+    "run at least 5 SWE-bench Verified instances through the official Docker harness",
+    "replace toy artifact replication with at least 1 real paper artifact package"
+  ],
+  "passed_gates": [
+    "fse_shape: RQs, baselines, faults, ablations, metrics, and related-work clusters are broad enough",
+    "synthetic_matrix: deterministic trace matrix exercises at least 100 cells",
+    "artifact_smoke: local artifact, SWE-bench-style, official-subset, and official-ingest contracts run",
+    "local_tasks: all three local toy task families currently pass"
+  ],
+  "ready_for_artifact_smoke": true,
+  "ready_for_submission_empirics": false,
+  "ready_for_top_conference_positioning": true,
+  "real_artifact_replication_count": 0,
+  "real_official_execution_confirmed": false,
+  "real_swebench_instances": 0,
+  "recommended_next_experiments": [
+    "Run 5-10 SWE-bench Verified instances with official Docker evaluation, then ingest results.json, instance_results.jsonl, run_logs, and execution receipts.",
+    "Add one small real artifact-replication package and measure hydration safety, unsupported claim rate, and artifact provenance completeness.",
+    "Run ablations no_hydration_manifest / no_memory_commit / no_trace_receipt on the same real-task slice.",
+    "Report FSE-facing overhead: token_cost, checkpoint_size, runtime_overhead, and provenance/context-retention cost.",
+    "Prepare an anonymized artifact README that separates synthetic smoke, local toy tasks, and real official benchmark evidence."
+  ],
+  "report_fingerprint": "14e4b8ff715d7c9d37e7e9219998ccbbca17e4dbbf97775ce2517e2ebde68b58",
+  "source_refs": [
+    "https://conf.researchr.org/track/fse-2027/fse-2027-papers",
+    "https://conf.researchr.org/dates/fse-2027",
+    "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/137/Reducing-Cost-of-LLM-Agents-with-Trajectory-Reduction",
+    "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/14/AgentBound-Securing-Execution-Boundaries-of-AI-Agents",
+    "https://conf.researchr.org/details/fse-2026/fse-2026-ideas-papers/15/Evaluating-Privilege-Usage-of-Agents-on-Real-World-Tools",
+    "https://conf.researchr.org/details/fse-2026/fse-2026-industry-papers/29/RocketMQ-A2A-Reliable-Session-Level-Replayable-Event-Streams-for-Large-Scale-Multi-Age",
+    "https://conf.researchr.org/details/fse-2026/fse-2026-ideas-visions-and-reflections/28/AgentReputation-A-Decentralized-Agentic-AI-Reputation-Framework",
+    "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/211/Event-B-Agent-Towards-LLM-Agent-for-Formal-Model-Synthesis-and-Repair",
+    "https://conf.researchr.org/details/fse-2026/fse-2026-journal-first/4/Human-AI-experience-in-integrated-development-environments-a-systematic-literature-r",
+    "https://www.swebench.com/",
+    "https://www.swebench.com/swebench-verified.html",
+    "https://www.swebench.com/swebench-pro.html",
+    "https://github.com/SWE-bench/SWE-bench/blob/main/docs/guides/evaluation.md",
+    "https://openai.com/index/introducing-swe-bench-verified/",
+    "https://labs.scale.com/leaderboard/swe_bench_pro_public",
+    "https://arxiv.org/abs/2607.23809",
+    "https://arxiv.org/abs/2605.26563",
+    "https://arxiv.org/abs/2607.06184",
+    "https://arxiv.org/abs/2510.12635",
+    "https://arxiv.org/abs/2512.10371",
+    "https://github.com/SWE-agent/mini-swe-agent",
+    "https://arxiv.org/abs/2503.18666",
+    "https://arxiv.org/abs/2603.21522",
+    "https://arxiv.org/abs/2604.08224",
+    "https://arxiv.org/abs/2605.14503",
+    "https://arxiv.org/abs/2607.26637",
+    "https://arxiv.org/abs/2607.08028",
+    "https://arxiv.org/abs/2607.27652",
+    "https://arxiv.org/abs/2606.30005",
+    "https://arxiv.org/abs/2607.27250",
+    "https://arxiv.org/abs/2607.26313",
+    "https://arxiv.org/abs/2606.30306",
+    "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/159/Not-All-RAGs-Are-Created-Equal-A-Component-Wise-Empirical-Study-for-Software-Enginee",
+    "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/205/Spectrum-based-Failure-Attribution-for-Multi-Agent-Systems",
+    "https://github.com/alyssa-sha/FORGET-SE"
+  ]
+}

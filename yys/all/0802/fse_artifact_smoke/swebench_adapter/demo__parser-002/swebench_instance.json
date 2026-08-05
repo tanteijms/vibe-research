@@ -1,0 +1,20 @@
+{
+  "base_commit": "def456",
+  "candidate_patch": "diff --git a/parser.py b/parser.py\n--- a/parser.py\n+++ b/parser.py\n@@\n-    return token == expected\n+    return token.lower() == expected\n",
+  "fail_to_pass": [
+    "test_parser.py::test_token_strip"
+  ],
+  "instance_id": "demo__parser-002",
+  "metadata": {},
+  "pass_to_pass": [],
+  "patch": "diff --git a/parser.py b/parser.py\n--- a/parser.py\n+++ b/parser.py\n@@\n-    return token == expected\n+    return token.strip() == expected\n",
+  "problem_statement": "The parser should strip whitespace before comparing tokens.",
+  "repo": "demo/parser",
+  "source_refs": [
+    "https://www.swebench.com/swebench-verified.html",
+    "https://software-lab.org/publications/icse2026_SWE-bench-correctness.pdf",
+    "https://labs.scale.com/leaderboard/swe_bench_pro_public"
+  ],
+  "test_patch": "diff --git a/test_parser.py b/test_parser.py\n+++ b/test_parser.py\n@@\n+def test_token_strip():\n+    assert parse(' ok ') == 'ok'\n",
+  "version": null
+}

@@ -1,0 +1,24 @@
+{
+  "docker_available": false,
+  "docker_version": null,
+  "failures": [
+    "docker command is not available; official SWE-bench evaluation cannot run locally",
+    "Python module 'swebench' is not installed"
+  ],
+  "official_harness_command": "python -m swebench.harness.run_evaluation --dataset_name princeton-nlp/SWE-bench_Verified --predictions_path /Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_official_subset/official_predictions.jsonl --max_workers 1 --run_id harness-x-hermes-small-subset",
+  "official_harness_command_present": true,
+  "predictions_path_exists": true,
+  "predictions_ref": "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_official_subset/official_predictions.jsonl",
+  "ready_for_swebench_official_docker_run": false,
+  "recommended_next_steps": [
+    "Install Docker and verify `docker --version` works.",
+    "Install the official SWE-bench package in an isolated environment.",
+    "Run the generated official_harness_command.txt for 5-10 SWE-bench Verified instances.",
+    "Feed the resulting results.json / instance_results.jsonl / run_logs back into SweBenchOfficialExecutionIngestor."
+  ],
+  "report_fingerprint": "a5c902fc86625438c1abf42d787a11e118f02a264ecc951b06b99aba593e16c7",
+  "subset_manifest_path_exists": true,
+  "subset_manifest_ref": "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/fse_artifact_smoke/swebench_official_subset/official_subset_manifest.json",
+  "swebench_module_available": false,
+  "warnings": []
+}

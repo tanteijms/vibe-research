@@ -1,0 +1,36 @@
+{
+  "base_commit": "local-demo-calc",
+  "candidate_patch": "diff --git a/calculator.py b/calculator.py\nindex 1c7fd7d..076d0fc 100644\n--- a/calculator.py\n+++ b/calculator.py\n@@ -1,2 +1,2 @@\n def add(a, b):\n-    return a - b\n+    return a + b\n",
+  "fail_to_pass": [
+    "test_calculator.py::CalculatorTests::test_add_regression"
+  ],
+  "instance_id": "executor__calculator-001",
+  "metadata": {
+    "candidate_patch_model": "gpt-5.4",
+    "candidate_patch_ref": "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/llm_swebench_patch_smoke/model_patches/executor__calculator-001.patch",
+    "candidate_patch_source": "real_llm",
+    "candidate_response_id": "resp_0b84a694d42a8781016a6f61328cd48190abd700a1e16a6511",
+    "execution_timeout_s": 10,
+    "local_repo_path": "/Users/yishuoyan/projects/frontier-ai/vibe-research/yys/all/0802/llm_swebench_patch_smoke/source_repos/calculator_repo",
+    "test_command": [
+      "/opt/homebrew/Caskroom/miniconda/base/bin/python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      ".",
+      "-p",
+      "test_*.py"
+    ]
+  },
+  "pass_to_pass": [],
+  "patch": "diff --git a/calculator.py b/calculator.py\n--- a/calculator.py\n+++ b/calculator.py\n@@ -1,2 +1,2 @@\n def add(a, b):\n-    return a - b\n+    return a + b\n",
+  "problem_statement": "The add helper subtracts its second argument.",
+  "repo": "local/calculator",
+  "source_refs": [
+    "https://www.swebench.com/swebench-verified.html",
+    "https://labs.scale.com/leaderboard/swe_bench_pro_public"
+  ],
+  "test_patch": "diff --git a/test_calculator.py b/test_calculator.py\n--- a/test_calculator.py\n+++ b/test_calculator.py\n@@ -4,6 +4,9 @@\n class CalculatorTests(unittest.TestCase):\n     def test_identity(self):\n         self.assertEqual(add(2, 0), 2)\n \n+    def test_add_regression(self):\n+        self.assertEqual(add(1, 2), 3)\n+\n if __name__ == '__main__':\n     unittest.main()\n",
+  "version": null
+}
