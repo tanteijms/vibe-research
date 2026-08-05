@@ -53,6 +53,17 @@
 | AgentRadio / SWE-Atlas QnA | 大代码库理解任务显示单 agent clean context 不够，异步被动感知和多 agent 分工能缓解长上下文限制。 | 科研 runtime 的 subtask/fork 应该保留 clean context + shared evidence graph，而不是共享一个膨胀上下文。 |
 | Self-Improving Behavioral Rules | review feedback 可以沉淀为版本化行为规则和自检 checklist，跨 session 避免同类错误复发。 | Self-Evo 不应直接改 prompt；应把人审反馈变成 versioned rule artifact，并通过 replay/eval gate。 |
 
+### 2.1 2026-08-06 context / artifact / provenance update
+
+| 新论文/信号 | 为什么继续盯 | 对本项目的任务 |
+|---|---|---|
+| Learning Agent-Compatible Context Management for Long-Horizon Tasks (AdaCoM) | context management 开始从摘要压缩走向外置 context controller，强调 retain/drop/compress/pin/branch 的策略化操作。 | 把 context 做成独立 control plane，而不是散落在 prompt summary / checkpoint 里的隐式副作用。 |
+| Memory as Action: Autonomous Context Curation for Long-Horizon Agentic Tasks (MemAct) | memory editing 被视为 policy action，意味着 memory mutation 应该有自己的 credit assignment、split point 和 replay boundary。 | 给 memory commit 增加 action-level provenance 和 trajectory fracture 语义。 |
+| LLM Agents Are Latent Context Managers: Eliciting Self-Managed Context via a Proprioceptive Dashboard | agent 如果看不见自己的上下文状态，就只能被外部黑盒 summary 摆布。 | 给 agent 暴露 context dashboard：当前 pinned facts、artifact refs、memory segments、retention budget 和 drift warnings。 |
+| ECHO: Prune To Act, Trace To Learn With Selective Turn Memory In Agentic RL | turn memory 需要 source-level provenance 和可追踪重构，否则上下文选择会破坏 credit assignment。 | `DecisionMemoryProjection` 后续按 turn / evidence / artifact source 进行可回放投影。 |
+| Durable intermediate artifacts | 中间工件被建模为 typed、addressable、versioned、dependency-aware 的 maintained state。 | hydration manifest 要恢复 artifact lineage / supersession / current-state resolution，而不只恢复对象列表。 |
+| Evidence tracing / execution provenance | provenance 不只是日志，而是可投影的证据支持图。 | `TraceEnvelope` 后续应更像 provenance graph 的入口，而不是纯事件容器。 |
+
 ## 3. Implementation Watch
 
 | 实现 | 该看什么 | 我们怎么吸收 |
@@ -118,6 +129,10 @@
 20. `ResearchSession`：已新增 paper scan / hypothesis / experiment / analysis / review / writeup 的 typed lifecycle phases 与 evidence gate。
 21. `EvidenceLedger`：已新增 source-backed claims、lineage、quarantine / retraction 和 claim citation；后续接 `ResearchSession` gate。
 22. `ProviderProfile`：已新增 Microsoft Agent Governance Toolkit profile；后续把 policy/identity/sandbox/compliance 作为外部 governance evidence refs。
+23. `ContextControlPlane`：后续把 retain/drop/compress/pin/branch/rehydrate 作为显式 context actions，而不是 prompt 摘要后处理。
+24. `ArtifactLineageVerifier`：后续让 hydration manifest 理解 supersession、current-state resolution 和 dependency-aware artifact graphs。
+25. `ProvenanceProjection`：后续把 trace envelope 投影成 execution provenance graph 与 evidence support graph。
+26. `FootprintBudget`：后续把 checkpoint / artifact / trace / context-retention bytes 作为正式预算项。
 
 ## 6. Sources
 
@@ -195,6 +210,10 @@
 - Always-On Agents: https://arxiv.org/abs/2606.30306
 - Agentic Context Management: https://arxiv.org/abs/2607.21503
 - ACM: Agentic Context Management for Long Horizon Tasks: https://arxiv.org/abs/2607.23809
+- Learning Agent-Compatible Context Management for Long-Horizon Tasks (AdaCoM): https://arxiv.org/abs/2605.30785
+- Memory as Action: Autonomous Context Curation for Long-Horizon Agentic Tasks (MemAct): https://arxiv.org/abs/2510.12635
+- LLM Agents Are Latent Context Managers: Eliciting Self-Managed Context via a Proprioceptive Dashboard: https://arxiv.org/abs/2606.30005
+- ECHO: Prune To Act, Trace To Learn With Selective Turn Memory In Agentic RL: https://arxiv.org/abs/2606.31650
 - SmoothAgent: https://arxiv.org/abs/2607.00151
 - Harness-MU: https://arxiv.org/abs/2606.21856
 - MCPEvol-Bench: https://arxiv.org/abs/2607.14642
