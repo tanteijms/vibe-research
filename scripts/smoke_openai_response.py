@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 from pathlib import Path
 import sys
 from urllib.error import HTTPError, URLError
@@ -45,11 +46,11 @@ def main() -> int:
     args = parser.parse_args()
 
     secrets = load_secret_file(args.secrets)
-    api_key = secrets.get("OPENAI_API_KEY")
+    api_key = os.environ.get("OPENAI_API_KEY") or secrets.get("OPENAI_API_KEY")
     if not api_key or not api_key.startswith("sk-"):
         print("No OPENAI_API_KEY found in local secrets file.", file=sys.stderr)
         return 2
-    base_url = args.base_url or secrets.get("OPENAI_BASE_URL") or "https://api.openai.com/v1"
+    base_url = os.environ.get("OPENAI_BASE_URL") or args.base_url or secrets.get("OPENAI_BASE_URL") or "https://api.openai.com/v1"
 
     body = {
         "model": args.model,

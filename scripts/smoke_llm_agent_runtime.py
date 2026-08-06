@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 from pathlib import Path
 import re
 import sys
@@ -13,6 +14,7 @@ from urllib.request import Request, urlopen
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from vibe_research import (
+    ContextControlPlane,
     EvidenceClaim,
     EvidenceEntry,
     EvidenceKind,
@@ -25,6 +27,7 @@ from vibe_research import (
     MemoryCommitProtocol,
     MemoryKind,
     PolicyHarness,
+    ProvenanceGraphCompiler,
     SkillManifest,
     ToolCall,
     ToolDescriptionContract,
@@ -264,11 +267,42 @@ def write_outputs(output_dir: Path, report: JsonDict) -> None:
         f"- approval_pause_observed: `{report['approval_pause_observed']}`\n"
         f"- final_status: `{report['final_status']}`\n"
         f"- hydration_safe_to_hydrate: `{report['hydration_safe_to_hydrate']}`\n"
+        f"- context_action_count: `{report.get('context_action_count', 0)}`\n"
+        f"- provenance_replay_ready: `{report.get('provenance_replay_ready', False)}`\n"
         f"- committed_memory_record_ids: `{', '.join(report['committed_memory_record_ids'])}`\n\n"
         "## Model assessment\n\n"
         f"{summary}\n"
     )
     (output_dir / "llm_agent_smoke_summary.md").write_text(markdown, encoding="utf-8")
+
+
+def write_failure_output(output_dir: Path, *, model: str, base_url_configured: bool, stage: str, error_summary: str) -> None:
+    output_dir.mkdir(parents=True, exist_ok=True)
+    report = {
+        "model": model,
+        "api_base_url_configured": base_url_configured,
+        "ready": False,
+        "failure_stage": stage,
+        "error_summary": error_summary,
+    }
+    (output_dir / "llm_agent_smoke_report.json").write_text(
+        json.dumps(report, indent=2, sort_keys=True, ensure_ascii=False),
+        encoding="utf-8",
+    )
+    (output_dir / "llm_agent_smoke_summary.md").write_text(
+        "\n".join(
+            [
+                "# LLM Agent Runtime Smoke Report",
+                "",
+                f"- model: `{model}`",
+                f"- ready: `False`",
+                f"- failure_stage: `{stage}`",
+                f"- error_summary: `{error_summary}`",
+                "",
+            ]
+        ),
+        encoding="utf-8",
+    )
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -280,11 +314,11 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     secrets = load_secret_file(args.secrets)
-    api_key = secrets.get("OPENAI_API_KEY")
+    api_key = os.environ.get("OPENAI_API_KEY") or secrets.get("OPENAI_API_KEY")
     if not api_key or not api_key.startswith("sk-"):
         print("No OPENAI_API_KEY found in local secrets file.", file=sys.stderr)
         return 2
-    base_url = args.base_url or secrets.get("OPENAI_BASE_URL") or "https://api.openai.com/v1"
+    base_url = os.environ.get("OPENAI_BASE_URL") or args.base_url or secrets.get("OPENAI_BASE_URL") or "https://api.openai.com/v1"
 
     goal = (
         "Assess whether Harness x Hermes should keep targeting FSE 2027, and choose the next "
@@ -363,6 +397,28 @@ def main(argv: list[str] | None = None) -> int:
                 fallback_paths=["fall back to deterministic local benchmark smoke"],
                 action_effects=[ToolEffect.READ, ToolEffect.EXECUTE],
             ).to_dict()
+            context_plane = ContextControlPlane(state)
+            context_plane.retain(
+                pin_id="goal",
+                surface="goal",
+                source_path="goal",
+                description="Preserve the runtime objective across compaction and replay.",
+                reason="prime the runtime scene with an explicit goal pin",
+            )
+            context_plane.retain(
+                pin_id="policy-snapshot",
+                surface="harness_policy",
+                source_path="policy_snapshot",
+                description="Carry the exact harness policy into later replay and hydration checks.",
+                reason="prime the runtime scene with a policy pin",
+            )
+            context_plane.pin(
+                pin_id="claim-fse-runtime-fit",
+                surface="evidence",
+                value="claim-fse-runtime-fit",
+                description="Keep the active evidence claim visible to the runtime.",
+                reason="bind the active evidence claim into the context dashboard",
+            )
 
             state, first_result = runtime.run_tool(state, first_call)
             if first_result is None:
@@ -388,6 +444,20 @@ def main(argv: list[str] | None = None) -> int:
                 state, second_result = runtime.approve_pending_tool(state)
             if second_result is None:
                 raise RuntimeError(f"second model-selected tool did not complete: {state.failure_state}")
+            context_plane = ContextControlPlane(state)
+            context_plane.branch(reason="branch the post-approval runtime scene for compaction-aware validation")
+            context_plane.compress(
+                "Compacted runtime state retaining the goal, harness policy, and active evidence claim.",
+                retained_pin_ids=context_plane.dashboard().pinned_pin_ids,
+                reason="prepare a compacted scene before hydration and provenance checks",
+            )
+            context_plane.rehydrate(
+                source_ref=state.checkpoint_ref or "checkpoint://unknown",
+                branch_id=context_plane.dashboard().branch_id,
+                restored_pin_ids=context_plane.dashboard().pinned_pin_ids,
+                summary="Rehydrated runtime state with the core governed pins intact.",
+                reason="resume the compacted runtime scene for final assessment",
+            )
 
             trace_envelope_count = sum(1 for event in runtime.events if "trace_envelope" in event.data)
             evidence_receipt_count = sum(
@@ -464,6 +534,13 @@ def main(argv: list[str] | None = None) -> int:
                 memory_records=list(memory_protocol.records.values()),
                 evidence_ledger=evidence_ledger,
             )
+            context_dashboard = ContextControlPlane(state).dashboard()
+            provenance_report = ProvenanceGraphCompiler().compile(
+                runtime.events,
+                state=state,
+                memory_records=list(memory_protocol.records.values()),
+                evidence_ledger=evidence_ledger,
+            )
 
         report: JsonDict = {
             "ready": (
@@ -473,9 +550,10 @@ def main(argv: list[str] | None = None) -> int:
                 and memory_commit.committed
                 and memory_safety.safe
                 and hydration_report.safe_to_hydrate
+                and provenance_report.replay_summary["replay_ready"]
             ),
             "model": args.model,
-            "api_base_url_configured": bool(secrets.get("OPENAI_BASE_URL") or args.base_url),
+            "api_base_url_configured": bool(os.environ.get("OPENAI_BASE_URL") or secrets.get("OPENAI_BASE_URL") or args.base_url),
             "llm_call_count": 3,
             "model_tool_json_parse_success_count": 2,
             "selected_tools": [first_call.tool_name, second_call.tool_name],
@@ -494,6 +572,13 @@ def main(argv: list[str] | None = None) -> int:
             "memory_safety_gate_safe": memory_safety.safe,
             "hydration_safe_to_hydrate": hydration_report.safe_to_hydrate,
             "hydration_retained_surfaces": hydration_report.retained_surfaces,
+            "context_action_count": context_dashboard.action_count,
+            "context_active_pin_ids": context_dashboard.pinned_pin_ids,
+            "context_dashboard_fingerprint": context_dashboard.dashboard_fingerprint,
+            "provenance_replay_ready": provenance_report.replay_summary["replay_ready"],
+            "provenance_execution_graph_fingerprint": provenance_report.execution_graph.graph_fingerprint,
+            "provenance_evidence_graph_fingerprint": provenance_report.evidence_support_graph.graph_fingerprint,
+            "provenance_warning_count": len(provenance_report.warnings),
             "manifest_fingerprint": manifest.fingerprint(),
             "final_model_assessment": final_text.strip(),
             "raw_response_ids": [
@@ -503,10 +588,40 @@ def main(argv: list[str] | None = None) -> int:
             ],
         }
     except HTTPError as exc:
-        print(f"LLM agent smoke failed: {summarize_http_error(exc)}", file=sys.stderr)
+        error_summary = summarize_http_error(exc)
+        if args.output_dir:
+            write_failure_output(
+                Path(args.output_dir),
+                model=args.model,
+                base_url_configured=bool(os.environ.get("OPENAI_BASE_URL") or secrets.get("OPENAI_BASE_URL") or args.base_url),
+                stage="responses_api_call",
+                error_summary=error_summary,
+            )
+        print(f"LLM agent smoke failed: {error_summary}", file=sys.stderr)
         return 1
     except URLError as exc:
-        print(f"LLM agent smoke failed: {exc}", file=sys.stderr)
+        error_summary = str(exc)
+        if args.output_dir:
+            write_failure_output(
+                Path(args.output_dir),
+                model=args.model,
+                base_url_configured=bool(os.environ.get("OPENAI_BASE_URL") or secrets.get("OPENAI_BASE_URL") or args.base_url),
+                stage="responses_api_call",
+                error_summary=error_summary,
+            )
+        print(f"LLM agent smoke failed: {error_summary}", file=sys.stderr)
+        return 1
+    except Exception as exc:
+        error_summary = f"{exc.__class__.__name__}: {exc}"
+        if args.output_dir:
+            write_failure_output(
+                Path(args.output_dir),
+                model=args.model,
+                base_url_configured=bool(os.environ.get("OPENAI_BASE_URL") or secrets.get("OPENAI_BASE_URL") or args.base_url),
+                stage="runtime_smoke",
+                error_summary=error_summary,
+            )
+        print(f"LLM agent smoke failed: {error_summary}", file=sys.stderr)
         return 1
 
     if args.output_dir:

@@ -13,15 +13,26 @@ from vibe_research import (
     EvidenceEntry,
     EvidenceKind,
     EvidenceLedger,
+    HarnessHermesRuntime,
+    HarnessPolicy,
+    HermesRuntime,
+    JsonCheckpointStore,
     MemoryKind,
     MemoryRecord,
     MemoryStatus,
+    PolicyHarness,
     ProcessStage,
     ProvenanceGraphCompiler,
     RuntimeState,
+    ToolCall,
+    ToolResult,
 )
 from vibe_research.schema import ArtifactRef, TraceEvent
+from vibe_research.tool_contracts import ToolDescriptionContract
 from vibe_research.trace_contract import TraceBoundary, TraceEnvelope, hash_payload, make_action_receipt
+from vibe_research.provider_profiles import get_provider_profile
+from vibe_research.protocol_profiles import get_protocol_profile
+from tempfile import TemporaryDirectory
 
 
 class ContextAndProvenanceTests(unittest.TestCase):
@@ -277,6 +288,96 @@ class ContextAndProvenanceTests(unittest.TestCase):
             "memory source ref is unresolved in provenance graph: artifact://missing.md",
             report.warnings,
         )
+
+    def test_provenance_graph_compiler_accepts_real_runtime_events(self):
+        with TemporaryDirectory() as temp_dir:
+            policy = HarnessPolicy(allowed_tools=["run_experiment"])
+            hermes = HermesRuntime(JsonCheckpointStore(Path(temp_dir) / "checkpoints"), policy=policy)
+            contract = ToolDescriptionContract(
+                name="run_experiment",
+                purpose="Run a bounded experiment and return metrics.",
+                input_schema={"type": "object", "properties": {"epochs": {"type": "integer"}}},
+                output_schema={"type": "object", "properties": {"metric": {"type": "number"}}},
+                limitations=["Requires a prepared benchmark task."],
+                side_effects=["Writes a metric artifact."],
+                failure_modes=["The experiment may need approval before running."],
+            )
+
+            def run_experiment(_call: ToolCall, _state) -> ToolResult:
+                return ToolResult(
+                    output="metric=0.97",
+                    tokens_used=32,
+                    cost_usd=0.02,
+                    artifacts=[ArtifactRef(kind="metric", uri="artifact://metric.json")],
+                )
+
+            runtime = HarnessHermesRuntime(
+                hermes=hermes,
+                harness=PolicyHarness(policy),
+                tools={"run_experiment": run_experiment},
+                provider_profile=get_provider_profile("openai"),
+                protocol_profile=get_protocol_profile("mcp"),
+                tool_contracts={"run_experiment": contract},
+            )
+            state = runtime.start("run a governed experiment")
+            ContextControlPlane(state).retain(
+                pin_id="goal",
+                surface="goal",
+                source_path="goal",
+                reason="keep the runtime goal visible during validation",
+            )
+            state.metadata["active_evidence_ledger"] = {
+                "name": "runtime-ledger",
+                "fingerprint": "ledger-fingerprint",
+                "claim_ids": ["claim-metric-sound"],
+            }
+            state, result = runtime.run_tool(
+                state,
+                ToolCall("run_experiment", {"epochs": 1}, effect="read"),
+            )
+
+            self.assertIsNotNone(result)
+            ledger = EvidenceLedger(
+                entries=[
+                    EvidenceEntry(
+                        entry_id="metric-entry",
+                        kind=EvidenceKind.ARTIFACT,
+                        source_ref="artifact://metric.json",
+                        labels=["metric"],
+                    )
+                ],
+                claims=[
+                    EvidenceClaim(
+                        claim_id="claim-metric-sound",
+                        statement="The metric artifact supports the experiment result.",
+                        cited_entry_ids=["metric-entry"],
+                        required_labels=["metric"],
+                    )
+                ],
+            )
+            memory_records = [
+                MemoryRecord(
+                    record_id="mem-metric",
+                    kind=MemoryKind.BELIEF,
+                    payload={"claim": "metric 0.97 was observed"},
+                    status=MemoryStatus.COMMITTED,
+                    source_refs=["artifact://metric.json"],
+                )
+            ]
+
+            report = ProvenanceGraphCompiler().compile(
+                runtime.events,
+                state=state,
+                memory_records=memory_records,
+                evidence_ledger=ledger,
+            )
+
+            self.assertTrue(report.replay_summary["replay_ready"])
+            self.assertEqual(report.replay_summary["trace_envelope_count"], 1)
+            self.assertIn("claim:claim-metric-sound", {node.node_id for node in report.evidence_support_graph.nodes})
+            self.assertTrue(
+                any(edge.relation == "attests" for edge in report.execution_graph.edges)
+            )
 
 
 if __name__ == "__main__":

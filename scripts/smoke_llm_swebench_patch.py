@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 from dataclasses import replace
 import json
+import os
 from pathlib import Path
 import re
 import sys
@@ -196,11 +197,11 @@ def main() -> int:
     args = parser.parse_args()
 
     secrets = load_secret_file(args.secrets)
-    api_key = secrets.get("OPENAI_API_KEY")
+    api_key = os.environ.get("OPENAI_API_KEY") or secrets.get("OPENAI_API_KEY")
     if not api_key or not api_key.startswith("sk-"):
         print("No OPENAI_API_KEY found in local secrets file.", file=sys.stderr)
         return 2
-    base_url = args.base_url or secrets.get("OPENAI_BASE_URL") or "https://api.openai.com/v1"
+    base_url = os.environ.get("OPENAI_BASE_URL") or args.base_url or secrets.get("OPENAI_BASE_URL") or "https://api.openai.com/v1"
 
     output_dir = Path(args.output_dir).resolve()
     source_repo_root = output_dir / "source_repos"
@@ -281,7 +282,7 @@ def main() -> int:
     report = {
         "ready": ready,
         "model": args.model,
-        "api_base_url_configured": bool(secrets.get("OPENAI_BASE_URL") or args.base_url),
+        "api_base_url_configured": bool(os.environ.get("OPENAI_BASE_URL") or secrets.get("OPENAI_BASE_URL") or args.base_url),
         "model_call_count": len(instances),
         "model_json_parse_success_count": parse_success_count,
         "model_failures": model_failures,

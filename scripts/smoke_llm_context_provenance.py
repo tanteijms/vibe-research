@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 from pathlib import Path
 import re
 import sys
@@ -391,14 +392,31 @@ def apply_model_plan(state: RuntimeState, plan: JsonDict) -> tuple[list[JsonDict
     for item in plan.get("retains", [])[:2]:
         if not isinstance(item, dict):
             continue
-        receipt = plane.retain(
-            pin_id=str(item.get("pin_id") or "retain-pin"),
-            surface=str(item.get("surface") or "context"),
-            source_path=str(item.get("source_path")) if item.get("source_path") else None,
-            description=str(item.get("description") or ""),
-            reason="model-selected retain action",
-        )
-        receipts.append(receipt.to_dict())
+        pin_id = str(item.get("pin_id") or "retain-pin")
+        source_path = str(item.get("source_path")) if item.get("source_path") else None
+        value = item.get("value")
+        try:
+            receipt = plane.retain(
+                pin_id=pin_id,
+                surface=str(item.get("surface") or "context"),
+                value=value,
+                source_path=source_path,
+                description=str(item.get("description") or ""),
+                reason="model-selected retain action",
+            )
+            receipts.append(receipt.to_dict())
+        except ValueError:
+            if value is None:
+                continue
+            receipt = plane.pin(
+                pin_id=pin_id,
+                surface=str(item.get("surface") or "context"),
+                value=value,
+                required=bool(item.get("required", True)),
+                description=str(item.get("description") or ""),
+                reason="fallback from invalid retain to explicit pin",
+            )
+            receipts.append(receipt.to_dict())
 
     for item in plan.get("pins", [])[:3]:
         if not isinstance(item, dict):
@@ -518,16 +536,18 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     secrets = load_secret_file(args.secrets)
-    api_key = secrets.get("OPENAI_API_KEY")
+    api_key = os.environ.get("OPENAI_API_KEY") or secrets.get("OPENAI_API_KEY")
     if not api_key or not api_key.startswith("sk-"):
         print("No OPENAI_API_KEY found in local secrets file.", file=sys.stderr)
         return 2
-    base_url = args.base_url or secrets.get("OPENAI_BASE_URL") or "https://api.openai.com/v1"
+    base_url = os.environ.get("OPENAI_BASE_URL") or args.base_url or secrets.get("OPENAI_BASE_URL") or "https://api.openai.com/v1"
 
     state = build_state()
     memory_records = build_memory_records()
     evidence_ledger = build_evidence_ledger()
     events = build_events(state, evidence_ledger)
+
+    output_dir = Path(args.output_dir).resolve()
 
     try:
         plan_text, plan_raw = call_responses_api(
@@ -541,9 +561,9 @@ def main(argv: list[str] | None = None) -> int:
     except HTTPError as exc:
         error_summary = summarize_http_error(exc)
         write_failure_output(
-            Path(args.output_dir).resolve(),
+            output_dir,
             model=args.model,
-            base_url_configured=bool(secrets.get("OPENAI_BASE_URL") or args.base_url),
+            base_url_configured=bool(os.environ.get("OPENAI_BASE_URL") or secrets.get("OPENAI_BASE_URL") or args.base_url),
             stage="planning_call",
             error_summary=error_summary,
         )
@@ -552,49 +572,61 @@ def main(argv: list[str] | None = None) -> int:
     except URLError as exc:
         error_summary = str(exc)
         write_failure_output(
-            Path(args.output_dir).resolve(),
+            output_dir,
             model=args.model,
-            base_url_configured=bool(secrets.get("OPENAI_BASE_URL") or args.base_url),
+            base_url_configured=bool(os.environ.get("OPENAI_BASE_URL") or secrets.get("OPENAI_BASE_URL") or args.base_url),
             stage="planning_call",
             error_summary=error_summary,
         )
         print(f"context/provenance planning call failed: {error_summary}", file=sys.stderr)
         return 1
 
-    receipts, dashboard = apply_model_plan(state, plan_payload)
-    compaction_report = CompactionVerifier().verify(state, RuntimeState.from_dict(state.to_dict()))
-    hydration_builder = HydrationManifestBuilder()
-    hydration_manifest = hydration_builder.dehydrate(
-        state,
-        events,
-        memory_records=memory_records,
-        evidence_ledger=evidence_ledger,
-        required_artifact_uris=["artifact://analysis.md"],
-        required_evidence_claim_ids=["claim-context-retained"],
-    )
-    hydration_report = hydration_builder.verify(
-        hydration_manifest,
-        state,
-        events,
-        memory_records=memory_records,
-        evidence_ledger=evidence_ledger,
-    )
-    provenance_report = ProvenanceGraphCompiler().compile(
-        events,
-        state=state,
-        memory_records=memory_records,
-        evidence_ledger=evidence_ledger,
-    )
+    try:
+        receipts, dashboard = apply_model_plan(state, plan_payload)
+        compaction_report = CompactionVerifier().verify(state, RuntimeState.from_dict(state.to_dict()))
+        hydration_builder = HydrationManifestBuilder()
+        hydration_manifest = hydration_builder.dehydrate(
+            state,
+            events,
+            memory_records=memory_records,
+            evidence_ledger=evidence_ledger,
+            required_artifact_uris=["artifact://analysis.md"],
+            required_evidence_claim_ids=["claim-context-retained"],
+        )
+        hydration_report = hydration_builder.verify(
+            hydration_manifest,
+            state,
+            events,
+            memory_records=memory_records,
+            evidence_ledger=evidence_ledger,
+        )
+        provenance_report = ProvenanceGraphCompiler().compile(
+            events,
+            state=state,
+            memory_records=memory_records,
+            evidence_ledger=evidence_ledger,
+        )
 
-    diagnosis_input = {
-        "branch_id": dashboard["branch_id"],
-        "pinned_pin_ids": dashboard["pinned_pin_ids"],
-        "retention_budget_bytes": dashboard["retention_budget_bytes"],
-        "hydration_safe_to_hydrate": hydration_report.safe_to_hydrate,
-        "provenance_replay_ready": provenance_report.replay_summary["replay_ready"],
-        "provenance_claim_count": provenance_report.replay_summary["evidence_claim_count"],
-        "warnings": provenance_report.warnings,
-    }
+        diagnosis_input = {
+            "branch_id": dashboard["branch_id"],
+            "pinned_pin_ids": dashboard["pinned_pin_ids"],
+            "retention_budget_bytes": dashboard["retention_budget_bytes"],
+            "hydration_safe_to_hydrate": hydration_report.safe_to_hydrate,
+            "provenance_replay_ready": provenance_report.replay_summary["replay_ready"],
+            "provenance_claim_count": provenance_report.replay_summary["evidence_claim_count"],
+            "warnings": provenance_report.warnings,
+        }
+    except Exception as exc:
+        error_summary = f"{exc.__class__.__name__}: {exc}"
+        write_failure_output(
+            output_dir,
+            model=args.model,
+            base_url_configured=bool(os.environ.get("OPENAI_BASE_URL") or secrets.get("OPENAI_BASE_URL") or args.base_url),
+            stage="local_context_execution",
+            error_summary=error_summary,
+        )
+        print(f"context/provenance local execution failed: {error_summary}", file=sys.stderr)
+        return 1
 
     try:
         diagnosis_text, diagnosis_raw = call_responses_api(
@@ -613,9 +645,9 @@ def main(argv: list[str] | None = None) -> int:
     except HTTPError as exc:
         error_summary = summarize_http_error(exc)
         write_failure_output(
-            Path(args.output_dir).resolve(),
+            output_dir,
             model=args.model,
-            base_url_configured=bool(secrets.get("OPENAI_BASE_URL") or args.base_url),
+            base_url_configured=bool(os.environ.get("OPENAI_BASE_URL") or secrets.get("OPENAI_BASE_URL") or args.base_url),
             stage="diagnosis_call",
             error_summary=error_summary,
         )
@@ -624,9 +656,9 @@ def main(argv: list[str] | None = None) -> int:
     except URLError as exc:
         error_summary = str(exc)
         write_failure_output(
-            Path(args.output_dir).resolve(),
+            output_dir,
             model=args.model,
-            base_url_configured=bool(secrets.get("OPENAI_BASE_URL") or args.base_url),
+            base_url_configured=bool(os.environ.get("OPENAI_BASE_URL") or secrets.get("OPENAI_BASE_URL") or args.base_url),
             stage="diagnosis_call",
             error_summary=error_summary,
         )
@@ -635,7 +667,7 @@ def main(argv: list[str] | None = None) -> int:
 
     report = {
         "model": args.model,
-        "api_base_url_configured": bool(secrets.get("OPENAI_BASE_URL") or args.base_url),
+        "api_base_url_configured": bool(os.environ.get("OPENAI_BASE_URL") or secrets.get("OPENAI_BASE_URL") or args.base_url),
         "llm_call_count": 2,
         "model_json_parse_success_count": 2,
         "planning_response_id": str(plan_raw.get("id") or ""),
