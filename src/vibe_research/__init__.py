@@ -7,6 +7,14 @@ from .artifact_replication import (
     ArtifactReplicationRunReport,
 )
 from .compaction import CompactionDrift, CompactionPin, CompactionReport, CompactionVerifier
+from .context_control_plane import (
+    ContextActionKind,
+    ContextActionReceipt,
+    ContextBranchState,
+    ContextControlPlane,
+    ContextDashboard,
+    ContextPinState,
+)
 from .decision_memory import DecisionMemoryProjection, DecisionMemoryProjectionReport
 from .evidence_ledger import EvidenceClaim, EvidenceEntry, EvidenceKind, EvidenceLedger, EvidenceLedgerReport, EvidenceStatus
 from .fse_alignment import FseTopConferenceAlignmentAuditor, FseTopConferenceAlignmentReport
@@ -54,6 +62,13 @@ from .memory_commit import (
 from .obligation_audit import AuditLink, AuditRelation, Obligation, ObligationAuditMap, ObligationAuditReport, ObligationStatus
 from .path_policy import ActionPathPolicy
 from .process_lifecycle import ProcessLifecycleReport, ProcessLifecycleVerifier, ProcessStage, StateLedgerItem, state_ledger_items_from_state
+from .provenance_graph import (
+    ProvenanceEdge,
+    ProvenanceGraph,
+    ProvenanceGraphCompileReport,
+    ProvenanceGraphCompiler,
+    ProvenanceNode,
+)
 from .permission_graph import AuthorityWitness, PermissionDecision, PermissionGrant, PermissionGraph
 from .provider_profiles import ProviderProfile, get_provider_profile
 from .protocol_profiles import ProtocolProfile, get_protocol_profile
@@ -109,6 +124,12 @@ __all__ = [
     "CompactionPin",
     "CompactionReport",
     "CompactionVerifier",
+    "ContextActionKind",
+    "ContextActionReceipt",
+    "ContextBranchState",
+    "ContextControlPlane",
+    "ContextDashboard",
+    "ContextPinState",
     "DecisionMemoryProjection",
     "DecisionMemoryProjectionReport",
     "EvidenceClaim",
@@ -175,6 +196,11 @@ __all__ = [
     "ProcessLifecycleReport",
     "ProcessLifecycleVerifier",
     "ProcessStage",
+    "ProvenanceEdge",
+    "ProvenanceGraph",
+    "ProvenanceGraphCompileReport",
+    "ProvenanceGraphCompiler",
+    "ProvenanceNode",
     "ProviderProfile",
     "ProtocolProfile",
     "ResearchPhase",
